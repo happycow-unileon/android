@@ -1,6 +1,6 @@
 package es.unileon.happycow.model.composite;
 
-//import es.unileon.happycow.database.*;
+import es.unileon.happycow.database.*;
 import es.unileon.happycow.handler.*;
 import es.unileon.happycow.model.InformationEvaluation;
 import es.unileon.happycow.model.iterator.Iterator;
@@ -23,7 +23,7 @@ public class Valoration implements Component {
     }
 
     public Valoration(float nota) {
-        this((IdHandler) new IdValoration(1),//Database.getInstance().nextIdValoration()),
+        this((IdHandler) new IdValoration(Database.getInstance(null).nextIdValoration()),
                 nota);
 
     }

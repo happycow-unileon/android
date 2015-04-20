@@ -1,6 +1,6 @@
 package es.unileon.happycow.model;
 
-//import es.unileon.happycow.database.*;
+import es.unileon.happycow.database.*;
 import es.unileon.happycow.handler.IdHandler;
 import es.unileon.happycow.model.facade.InterfaceEvaluationModel;
 import java.io.Serializable;
@@ -197,7 +197,7 @@ public class Farm implements Serializable{
 
     public LinkedList<InterfaceEvaluationModel> getListEvaluation() {
         if (list == null) {
-           list = null;//Database.getInstance().getListEvaluations(idFarm);
+           list = Database.getInstance(null).getListEvaluations(idFarm);
         }
         return list;
     }

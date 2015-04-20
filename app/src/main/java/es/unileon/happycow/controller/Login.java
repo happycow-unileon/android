@@ -4,8 +4,11 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
@@ -29,6 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.unileon.happycow.R;
+import es.unileon.happycow.database.Database;
+import es.unileon.happycow.model.Rol;
 
 
 /**
@@ -37,19 +42,13 @@ import es.unileon.happycow.R;
 public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
     /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
+    private Rol rolUser;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private AutoCompleteTextView mUserView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -60,7 +59,7 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
         setContentView(R.layout.login);
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mUserView = (AutoCompleteTextView) findViewById(R.id.user);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -75,8 +74,8 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        Button mSignInButton = (Button) findViewById(R.id.sign_in_button);
+        mSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -85,12 +84,42 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        //set up the database
+        Database.getInstance(this).openDB();
     }
 
     private void populateAutoComplete() {
         getLoaderManager().initLoader(0, null, this);
     }
 
+    private void loginSucessful(){
+        //indicar al controlador general que se cambia de ventana
+        switch (Database.getInstance(null).getUser().getRol()){
+            case ADMINISTRADOR:
+                new AlertDialog.Builder(this)
+                        .setTitle("Rol")
+                        .setMessage("Soy el admin")
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                //controller.administrator();
+                break;
+            case VETERINARIO:
+                new AlertDialog.Builder(this)
+                        .setTitle("Rol")
+                        .setMessage("Soy el veterinario")
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+                //controller.seeListFarm();
+                break;
+        }
+
+        Intent i = new Intent (this, Administrator.class);
+        //i.putExtra("nombre", campoNombre.getText()+"");
+        startActivity(i);
+    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -103,11 +132,11 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
         }
 
         // Reset errors.
-        mEmailView.setError(null);
+        mUserView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
+        String email = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -123,12 +152,12 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            mUserView.setError(getString(R.string.error_field_required));
+            focusView = mUserView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            mUserView.setError(getString(R.string.error_invalid_email));
+            focusView = mUserView;
             cancel = true;
         }
 
@@ -147,12 +176,12 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        return true; //email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return true; //password.length() > 4;
     }
 
     /**
@@ -242,7 +271,7 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
                 new ArrayAdapter<String>(Login.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-        mEmailView.setAdapter(adapter);
+        mUserView.setAdapter(adapter);
     }
 
     /**
@@ -253,16 +282,16 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
         private final String mEmail;
         private final String mPassword;
+        private String error;
 
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
+            error="";
         }
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
             try {
                 // Simulate network access.
                 Thread.sleep(2000);
@@ -270,16 +299,20 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
+            // TODO: attempt authentication against a network service.
+            error=Database.getInstance(null).login(mEmail, mPassword);
+            if(error.length()>0){
+                return false;
+
+            }else{
+                rolUser=Database.getInstance(null).getUser().getRol();
+                return true;
+                //login.setMessageError("Error en los datos de logueo, pruebe otra vez");
+
             }
 
             // TODO: register the new account here.
-            return true;
+            //return true;
         }
 
         @Override
@@ -288,10 +321,16 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
-                finish();
+                loginSucessful();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
+                if(error.contains("Contraseña")) {
+                    mPasswordView.setError(error);
+                    mPasswordView.requestFocus();
+                }else{
+                    mUserView.setError(error);
+                    mUserView.requestFocus();
+                }
+
             }
         }
 

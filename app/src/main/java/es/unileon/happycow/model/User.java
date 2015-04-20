@@ -1,6 +1,6 @@
 package es.unileon.happycow.model;
 
-//import es.unileon.happycow.database.concreteDatabase.DefaultDatabase;
+import es.unileon.happycow.database.concreteDatabase.AndroidSQLite;
 import es.unileon.happycow.handler.IdHandler;
 import es.unileon.happycow.handler.IdUser;
 import java.io.Serializable;
@@ -49,7 +49,7 @@ public class User implements Serializable{
         this.name=id.toString();
         this.idHandler=id;
         if(!encripted){
-            this.password="";//DefaultDatabase.encript(passwd);
+            this.password= AndroidSQLite.encript(passwd);
         }else{
             this.password=passwd;
         }

@@ -1,7 +1,7 @@
 
 package es.unileon.happycow.strategy;
 
-//import es.unileon.happycow.database.Database;
+import es.unileon.happycow.database.Database;
 import es.unileon.happycow.handler.Category;
 import es.unileon.happycow.handler.IdCategory;
 import es.unileon.happycow.handler.IdHandler;
@@ -83,7 +83,7 @@ public class AverageEvaluation extends EvaluationAlgorithm{
     private String information(){
         StringBuilder result=new StringBuilder();
         IdHandler idFarm=this.model.getInformation().getIdFarm();
-        Farm farm=null;//Database.getInstance().getFarm(idFarm);
+        Farm farm=Database.getInstance(null).getFarm(idFarm);
         result.append(farm.getInformation());
         result.append(this.model.getInformation().getFecha().toString());
         result.append("<br>");

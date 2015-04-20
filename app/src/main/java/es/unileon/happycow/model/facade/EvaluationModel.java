@@ -1,6 +1,6 @@
 package es.unileon.happycow.model.facade;
 
-//import es.unileon.happycow.database.Database;
+import es.unileon.happycow.database.Database;
 
 import es.unileon.happycow.model.composite.CategoryComposite;
 import es.unileon.happycow.model.composite.Component;
@@ -33,15 +33,15 @@ public class EvaluationModel implements InterfaceEvaluationModel {
      * @param idFarm
      */
     public EvaluationModel(boolean update, IdHandler idFarm) {
-//        this(update, new InformationEvaluation(
-//                new IdEvaluation(Database.getInstance().nextIdEvaluation()), idFarm,
-//                Database.getInstance().getNumberCow(idFarm)));
-    }
-    
+        this(update, new InformationEvaluation(
+                new IdEvaluation(Database.getInstance(null).nextIdEvaluation()), idFarm,
+                Database.getInstance(null).getNumberCow(idFarm)));
+   }
+
     public EvaluationModel(IdHandler idFarm) {
-//        this(true, new InformationEvaluation(
-//                new IdEvaluation(Database.getInstance().nextIdEvaluation()),
-//                idFarm, Database.getInstance().getNumberCow(idFarm)));
+        this(true, new InformationEvaluation(
+                new IdEvaluation(Database.getInstance(null).nextIdEvaluation()),
+        idFarm, Database.getInstance(null).getNumberCow(idFarm)));
     }
 
 

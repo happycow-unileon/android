@@ -1,8 +1,8 @@
 package es.unileon.happycow.procedures;
 
-//import es.unileon.happycow.database.PonderationDB;
-//import es.unileon.happycow.database.Database;
-//import es.unileon.happycow.database.ValorationDB;
+import es.unileon.happycow.database.PonderationDB;
+import es.unileon.happycow.database.Database;
+import es.unileon.happycow.database.ValorationDB;
 import es.unileon.happycow.model.Farm;
 import es.unileon.happycow.model.User;
 import es.unileon.happycow.model.composite.Criterion;
@@ -28,7 +28,7 @@ import java.util.zip.ZipOutputStream;
  * @author amdiaz8
  */
 public class Backup {
-    /*private StringBuilder estado;
+    private StringBuilder estado;
 
     public String rutaTemporalExportar = System.getProperty("java.io.tmpdir")
             .concat("/HappyCowExport");
@@ -61,35 +61,35 @@ public class Backup {
             File ponderacionCategoria = new File(temporal, "ponCriterios");
             // Se abre el fichero donde se hará la copia
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(usuarios));
-            LinkedList<User> users = Database.getInstance().getListUsers();
+            LinkedList<User> users = Database.getInstance(null).getListUsers();
             for (User user : users) {
                 oos.writeObject(user);
             }
             oos.close();
 
             oos = new ObjectOutputStream(new FileOutputStream(granjas));
-            LinkedList<Farm> farms = Database.getInstance().getAllFarms();
+            LinkedList<Farm> farms = Database.getInstance(null).getAllFarms();
             for (Farm farm : farms) {
                 oos.writeObject(farm);
             }
             oos.close();
 
             oos = new ObjectOutputStream(new FileOutputStream(evaluaciones));
-            LinkedList<EvaluationModel> evals = Database.getInstance().getAllEvaluations();
+            LinkedList<EvaluationModel> evals = Database.getInstance(null).getAllEvaluations();
             for (EvaluationModel model : evals) {
                 oos.writeObject(model);
             }
             oos.close();
             
             oos = new ObjectOutputStream(new FileOutputStream(notas));
-            LinkedList<ValorationDB> valorations = Database.getInstance().getAllValorations();
+            LinkedList<ValorationDB> valorations = Database.getInstance(null).getAllValorations();
             for (ValorationDB valoration : valorations) {
                 oos.writeObject(valoration);
             }
             oos.close();
             
             oos = new ObjectOutputStream(new FileOutputStream(criterios));
-            LinkedList<Criterion> crit = Database.getInstance().getListCriterion();
+            LinkedList<Criterion> crit = Database.getInstance(null).getListCriterion();
             for (Criterion criterion : crit) {
                 oos.writeObject(criterion);
             }
@@ -97,14 +97,14 @@ public class Backup {
 
             //quedan las ponderaciones
             oos = new ObjectOutputStream(new FileOutputStream(ponderacionCategoria));
-            LinkedList<PonderationDB> cat = Database.getInstance().getCategoryPonderation();
+            LinkedList<PonderationDB> cat = Database.getInstance(null).getCategoryPonderation();
             for (PonderationDB pon : cat) {
                 oos.writeObject(pon);
             }
             oos.close();
             
             oos = new ObjectOutputStream(new FileOutputStream(ponderacionCriterio));
-            LinkedList<PonderationDB> ponderation = Database.getInstance().getCriterionPonderation();
+            LinkedList<PonderationDB> ponderation = Database.getInstance(null).getCriterionPonderation();
             for (PonderationDB poncri : ponderation) {
                 oos.writeObject(poncri);
             }
@@ -148,12 +148,10 @@ public class Backup {
         borrarDirectorio(new File(rutaTemporalExportar));
     }
 
-    *//**
+    /**
      * Comprime los ficheros exportados y los deja en la ruta especificada
      *
-     * @param ruta donde se dejará el comprimido
-     * @param llave la llave para la encriptación
-     *//*
+     */
     private void comprimir(File comprimido) throws Exception {
         //lista los ficheros a comprimir
         File[] ficheros = new File(rutaTemporalExportar).listFiles();
@@ -189,12 +187,12 @@ public class Backup {
 
     }
 
-    *//**
+    /**
      * Se borra los ficheros temporales, método recursivo para borrar también
      * las posibles carpetas que haya dentro del directorio dado
      *
      * @param directorio el directorio a borrar con todo su contenido
-     *//*
+     */
     private void borrarDirectorio(File directorio) {
         //cojo todos los ficheros/directorios que hay
         File[] ficheros = directorio.listFiles();
@@ -214,12 +212,11 @@ public class Backup {
 
     
     
-    *//**
+    /**
      * Realiza los pasos necesarios para importar el código
      *
      * @param comprimido el fichero comprimido
-     * @param contrasena la contraseña del fichero
-     *//*
+     */
     private boolean importar(File comprimido) {
 
         //establezco la ruta temporal y creo las carpetas
@@ -266,9 +263,9 @@ public class Backup {
             importar(fichero);
             try{
                 
-                Database.getInstance().startTransaccion();
+                Database.getInstance(null).startTransaccion();
                 
-                if(Database.getInstance().clearDB()){
+                if(Database.getInstance(null).clearDB()){
                     File temporal=new File(rutaTemporalImportar);
                     File criterios = new File(temporal, "criterios");
                     File usuarios = new File(temporal, "usuarios");
@@ -284,7 +281,7 @@ public class Backup {
                     try{
                         User user=(User)oos.readObject();
                         while(user!=null){
-                            result=result & Database.getInstance().newUser(user);
+                            result=result & Database.getInstance(null).newUser(user);
                             user=(User)oos.readObject();
                         }
                     }catch(EOFException o){
@@ -296,7 +293,7 @@ public class Backup {
                     try{
                         Farm farm=(Farm)oos.readObject();
                         while(farm!=null){
-                            result=result & Database.getInstance().newFarm(farm);
+                            result=result & Database.getInstance(null).newFarm(farm);
                             farm=(Farm)oos.readObject();
                         }
                     }catch(EOFException o){
@@ -308,7 +305,7 @@ public class Backup {
                     try{
                         Criterion criterion=(Criterion)oos.readObject();
                         while(criterion!=null){
-                            result=result & Database.getInstance().newCriterion(criterion);
+                            result=result & Database.getInstance(null).newCriterion(criterion);
                             criterion=(Criterion)oos.readObject();
                         }
                     }catch(EOFException o){
@@ -320,7 +317,7 @@ public class Backup {
                     try{
                         EvaluationModel model=(EvaluationModel)oos.readObject();
                         while(model!=null){
-                            result=result & Database.getInstance().saveEvaluationBackup(model);
+                            result=result & Database.getInstance(null).saveEvaluationBackup(model);
                             model=(EvaluationModel)oos.readObject();
                         }
                     }catch(EOFException o){
@@ -332,7 +329,7 @@ public class Backup {
                     try{
                     ValorationDB valoration=(ValorationDB)oos.readObject();
                         while(valoration!=null){
-                            result=result & Database.getInstance().
+                            result=result & Database.getInstance(null).
                                     saveValoration(valoration);
                             valoration=(ValorationDB)oos.readObject();
                         }
@@ -353,7 +350,7 @@ public class Backup {
                     }catch(EOFException o){
                         System.out.println(o.toString());
                     }
-                    result=result & Database.getInstance().saveCategoryPonderation(listC);
+                    result=result & Database.getInstance(null).saveCategoryPonderation(listC);
                     oos.close();
                     
                     oos = new ObjectInputStream(new FileInputStream(ponderacionCriterio));
@@ -368,7 +365,7 @@ public class Backup {
                     }catch(EOFException o){
                         System.out.println(o.toString());
                     }
-                    result=result & Database.getInstance().saveCriterionPonderation(list);
+                    result=result & Database.getInstance(null).saveCriterionPonderation(list);
                     oos.close();
                 }
             }catch(IOException | ClassNotFoundException e){
@@ -387,20 +384,20 @@ public class Backup {
         }
         
         if(result){
-            Database.getInstance().commit();
+            Database.getInstance(null).commit();
             System.out.println("Exito");
         }else{
-            Database.getInstance().rollback();
+            Database.getInstance(null).rollback();
             System.out.println("Fracaso");
         }
         return result;
     }
 
-    *//**
+    /**
      * Cuando se termina con la importación, borro los ficheros temporales
-     *//*
+     */
     private void finImportacion() {
         borrarDirectorio(new File(rutaTemporalImportar));
     }
-*/
+
 }
