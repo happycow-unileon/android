@@ -95,26 +95,26 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
     private void loginSucessful(){
         //indicar al controlador general que se cambia de ventana
-        switch (Database.getInstance(null).getUser().getRol()){
-            case ADMINISTRADOR:
-                new AlertDialog.Builder(this)
-                        .setTitle("Rol")
-                        .setMessage("Soy el admin")
-                        .setPositiveButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-                //controller.administrator();
-                break;
-            case VETERINARIO:
-                new AlertDialog.Builder(this)
-                        .setTitle("Rol")
-                        .setMessage("Soy el veterinario")
-                        .setPositiveButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-                //controller.seeListFarm();
-                break;
-        }
+//        switch (Database.getInstance(null).getUser().getRol()){
+//            case ADMINISTRADOR:
+//                new AlertDialog.Builder(this)
+//                        .setTitle("Rol")
+//                        .setMessage("Soy el admin")
+//                        .setPositiveButton(android.R.string.ok, null)
+//                        .setIcon(android.R.drawable.ic_dialog_alert)
+//                        .show();
+//                //controller.administrator();
+//                break;
+//            case VETERINARIO:
+//                new AlertDialog.Builder(this)
+//                        .setTitle("Rol")
+//                        .setMessage("Soy el veterinario")
+//                        .setPositiveButton(android.R.string.ok, null)
+//                        .setIcon(android.R.drawable.ic_dialog_alert)
+//                        .show();
+//                //controller.seeListFarm();
+//                break;
+//        }
 
         Intent i = new Intent (this, Administrator.class);
         //i.putExtra("nombre", campoNombre.getText()+"");

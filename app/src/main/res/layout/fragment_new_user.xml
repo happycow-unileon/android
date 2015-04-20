@@ -7,10 +7,52 @@
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Design Top Rated Screen"
+        android:gravity="left"
+        android:text="Nombre usuario"
         android:textSize="20dp"
         android:layout_centerInParent="true"/>
 
+    <EditText
+        android:id="@+id/nameUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Contraseña"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"/>
+
+    <EditText
+        android:id="@+id/passwordUser"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Rol"
+        android:textSize="20dp"
+        android:layout_centerInParent="true"/>
+
+    <Spinner
+        android:id="@+id/rolUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        </Spinner>
+
+    <Button
+        android:id="@+id/buttonNewUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:text="Añadir"/>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
