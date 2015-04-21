@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fa6a6a" >
+    android:background="#17df0d">
 
     <TextView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Design Top Rated Screen"
+        android:text="Escoja criterio a eliminar"
+        android:textSize="20dp"
+        android:layout_gravity="center"/>
+
+    <Spinner
+        android:id="@+id/listCriterions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/error"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/abc_background_cache_hint_selector_material_dark"
+        android:gravity="center"
+        android:text=""
         android:textSize="20dp"
         android:layout_centerInParent="true"/>
 
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Seleccione cuidadosamente el criterio.\n\nSi procede a eliminar, se eliminará el resto de información relacionada como son parte de las evaluaciones en las que se ha evaluado con dicho criterio."
+        android:textSize="20dp"
+        android:layout_centerInParent="true"/>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/buttonDeleteCriterion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:text="Eliminar"/>
+
+</LinearLayout>

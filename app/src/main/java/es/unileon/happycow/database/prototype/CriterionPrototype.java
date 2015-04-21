@@ -36,7 +36,10 @@ public class CriterionPrototype {
     public Criterion clone(String name) {
         Criterion criterion = null;
         try {
-            criterion = (Criterion) list.get(name).clone();
+            criterion = list.get(name);
+            if(criterion!=null){
+                criterion=(Criterion)criterion.clone();
+            }
         } catch (CloneNotSupportedException e) {
             System.out.println(e.toString());
         }

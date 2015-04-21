@@ -529,7 +529,7 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
     @Override
     public boolean removeUser(User user) {
         String args[]={user.getName()};
-        long result=connection.delete("USUARIO", "WHERE NOMBREUSUARIO=?", args);
+        long result=connection.delete("USUARIO", "NOMBREUSUARIO=?", args);
         return result!=-1;
     }
 
@@ -908,9 +908,9 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
         result=connection.rawQuery("SELECT * FROM USUARIO",null);
 
             while (result.moveToNext()) {
-                String a = result.getString(result.getColumnIndex("nombreusuario"));
-                String b = result.getString(result.getColumnIndex("contrasenia"));
-                String c = result.getString(result.getColumnIndex("rol"));
+                String a = result.getString(result.getColumnIndex("NOMBREUSUARIO"));
+                String b = result.getString(result.getColumnIndex("CONTRASENIA"));
+                String c = result.getString(result.getColumnIndex("ROL"));
                 Rol rol;
                 if (c.equalsIgnoreCase("veterinario")) {
                     rol = Rol.VETERINARIO;
