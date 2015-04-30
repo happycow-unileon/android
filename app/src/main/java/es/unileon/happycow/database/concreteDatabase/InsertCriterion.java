@@ -25,8 +25,6 @@ public class InsertCriterion  extends AsyncTask<Void,Void,Boolean> {
     private StringBuilder aSentence;
     private Context context;
 
-//    private final String pathXml = "criterionbase.xml";
-
     public InsertCriterion(Context context) {
         this.inserts = new LinkedList<>();
         this.context=context;
@@ -49,7 +47,7 @@ public class InsertCriterion  extends AsyncTask<Void,Void,Boolean> {
         criterion.setEndElementListener(new EndElementListener() {
             @Override
             public void end() {
-                aSentence.append("')");
+                aSentence.append(")");
                 inserts.add(aSentence.toString());
             }
         });
@@ -85,7 +83,7 @@ public class InsertCriterion  extends AsyncTask<Void,Void,Boolean> {
             @Override
             public void end(String s) {
                 aSentence.append(s);
-                aSentence.append("')");
+                aSentence.append("'");
             }
         });
 

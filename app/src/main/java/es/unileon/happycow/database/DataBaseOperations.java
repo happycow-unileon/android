@@ -40,6 +40,8 @@ public interface DataBaseOperations {
      */
     public boolean openDB();
 
+    public boolean isOpen();
+
     /**
      * Operaciones que se necesite para cerrar/desconectar de la base de 
      * datos de forma segura

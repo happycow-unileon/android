@@ -202,6 +202,15 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
         return true;
     }
 
+    @Override
+    public boolean isOpen(){
+        if(connection!=null) {
+            return connection.isOpen();
+        }else{
+            return false;
+        }
+    }
+
     /**
      * Compruebo si existe el usuario en la base de datos
      *

@@ -13,7 +13,7 @@ import es.unileon.happycow.controller.admin.DeleteUser;
 import es.unileon.happycow.controller.admin.Excel;
 import es.unileon.happycow.controller.admin.NewCriterion;
 import es.unileon.happycow.controller.admin.NewUser;
-import es.unileon.happycow.controller.admin.Backup;
+import es.unileon.happycow.controller.admin.BackupFragment;
 import es.unileon.happycow.controller.admin.TabsPagerAdapter;
 
 public class Administrator extends FragmentActivity implements ActionBar.TabListener {
@@ -38,7 +38,7 @@ public class Administrator extends FragmentActivity implements ActionBar.TabList
         mAdapter.addPage(new NewCriterion(), "Nuevo Criterio");
         mAdapter.addPage(new DeleteUser(), "Borrar Usuario");
         mAdapter.addPage(new DeleteCriterion(), "Borrar Criterio");
-        mAdapter.addPage(new Backup(), "Backup");
+        mAdapter.addPage(new BackupFragment(), "BackupFragment");
         mAdapter.addPage(new Excel(), "Excel");
 
 

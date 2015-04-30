@@ -30,10 +30,8 @@ import java.util.zip.ZipOutputStream;
 public class Backup {
     private StringBuilder estado;
 
-    public String rutaTemporalExportar = System.getProperty("java.io.tmpdir")
-            .concat("/HappyCowExport");
-    public String rutaTemporalImportar = System.getProperty("java.io.tmpdir")
-            .concat("/HapppyCowImport");
+    public String rutaTemporalExportar = "HappyCowExport";
+    public String rutaTemporalImportar= "HapppyCowImport";
 
     public Backup() {
         this.estado = new StringBuilder();
@@ -111,6 +109,15 @@ public class Backup {
             oos.close();
             
             exportar(carpeta.toString(), new Date().toString());
+
+            criterios.delete();
+            usuarios.delete();
+            granjas.delete();
+            evaluaciones.delete();
+            notas.delete();
+            ponderacionCriterio.delete();
+            ponderacionCategoria.delete();
+            temporal.delete();
             
         } catch (Exception e) {
             result=false;
