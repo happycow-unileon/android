@@ -18,6 +18,7 @@ public class EntradaExcel  extends EntradaLista{
     public String name;
 
     public EntradaExcel(String name, boolean selected) {
+        super();
         this.selected = selected;
         this.name = name;
     }
@@ -60,5 +61,10 @@ public class EntradaExcel  extends EntradaLista{
         holder.selected.setChecked(selected);
 
         return view;
+    }
+
+    @Override
+    public View onViewExpandable(LayoutInflater inflater, View view, ViewGroup viewGroup, boolean isExpand) {
+        return onView(inflater,view, viewGroup);
     }
 }

@@ -5,14 +5,20 @@
     android:orientation="vertical"
     android:background="#fa6a6a" >
 
-    <ListView
+    <Spinner
+        android:id="@+id/listUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <ExpandableListView
         android:id="@+id/listaExcel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
 
-        </ListView>
+        </ExpandableListView>
 
     <Button android:layout_width="fill_parent"
         android:layout_height="wrap_content"

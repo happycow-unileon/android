@@ -13,8 +13,8 @@ import java.util.List;
  * Created by dorian on 24/04/15.
  */
 public class ListAdapter extends BaseAdapter {
-    List<EntradaLista> list;
-    LayoutInflater inflater;
+    private List<EntradaLista> list;
+    private LayoutInflater inflater;
 
     public ListAdapter(Context context, List<EntradaLista> list) {
         super();
