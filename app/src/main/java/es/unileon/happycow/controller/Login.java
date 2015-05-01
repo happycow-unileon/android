@@ -116,7 +116,7 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 //                break;
 //        }
 
-        Intent i = new Intent (this, Administrator.class);
+        Intent i = new Intent (this, Evaluation.class);
         //i.putExtra("nombre", campoNombre.getText()+"");
         startActivity(i);
     }
