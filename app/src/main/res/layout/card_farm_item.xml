@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:id="@+id/cardFarmItemLayout">
+
+
+    <ImageView
+        android:layout_width="115dp"
+        android:layout_height="135dp"
+        android:id="@+id/iconFarmer"
+        android:src="@drawable/icon_farmer" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Antonio Molina"
+            android:id="@+id/farmerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:text="ID: 78787878W"
+            android:id="@+id/farmerID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp" />
+
+        <TextView
+            android:text="Farm name: Rancho faliz"
+            android:id="@+id/farmName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:text="Farm ID: 8745948378-HQL-34"
+            android:id="@+id/farmID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp" />
+
+        <TextView
+            android:text="Number cows: 74"
+            android:id="@+id/numCows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:text="Evaluations: 74"
+            android:id="@+id/numEvaluations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp" />
+        </LinearLayout>
+
+</LinearLayout>

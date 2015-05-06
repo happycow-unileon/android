@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.unileon.happycow.R;
+import es.unileon.happycow.controller.guiAntonio.MainActivity;
 import es.unileon.happycow.database.Database;
 import es.unileon.happycow.model.Rol;
 
@@ -116,7 +117,8 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 //                break;
 //        }
 
-        Intent i = new Intent (this, Evaluation.class);
+        //Intent i = new Intent (this, Evaluation.class);
+        Intent i = new Intent (this, MainActivity.class);
         //i.putExtra("nombre", campoNombre.getText()+"");
         startActivity(i);
     }
@@ -292,27 +294,27 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+//            try {
+//                // Simulate network access.
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                return false;
+//            }
 
             // TODO: attempt authentication against a network service.
-            error=Database.getInstance(null).login(mEmail, mPassword);
-            if(error.length()>0){
-                return false;
-
-            }else{
-                rolUser=Database.getInstance(null).getUser().getRol();
-                return true;
-                //login.setMessageError("Error en los datos de logueo, pruebe otra vez");
-
-            }
+//            error=Database.getInstance(null).login(mEmail, mPassword);
+//            if(error.length()>0){
+//                return false;
+//
+//            }else{
+//                rolUser=Database.getInstance(null).getUser().getRol();
+//                return true;
+//                //login.setMessageError("Error en los datos de logueo, pruebe otra vez");
+//
+//            }
 
             // TODO: register the new account here.
-            //return true;
+            return true;
         }
 
         @Override
