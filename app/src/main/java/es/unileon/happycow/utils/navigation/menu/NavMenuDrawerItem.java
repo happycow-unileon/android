@@ -1,13 +1,13 @@
-package es.unileon.happycow.utils.list.model;
+package es.unileon.happycow.utils.navigation.menu;
 
-public class NavDrawerItem {
+public class NavMenuDrawerItem {
 	
 	private String title;
 	private int icon;
 	
-	public NavDrawerItem(){}
+	public NavMenuDrawerItem(){}
 
-	public NavDrawerItem(String title, int icon){
+	public NavMenuDrawerItem(String title, int icon){
 		this.title = title;
 		this.icon = icon;
 	}

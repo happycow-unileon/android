@@ -1,4 +1,4 @@
-package es.unileon.happycow.utils;
+package es.unileon.happycow.utils.navigation.menu.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -10,16 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.unileon.happycow.R;
-import es.unileon.happycow.utils.list.model.NavDrawerItem;
+import es.unileon.happycow.utils.navigation.menu.NavMenuDrawerItem;
 
 import java.util.ArrayList;
 
-public class NavDrawerListAdapter extends BaseAdapter {
+public class NavMenuDrawerAdapter extends BaseAdapter {
 	
 	private Context context;
-	private ArrayList<NavDrawerItem> navDrawerItems;
+	private ArrayList<NavMenuDrawerItem> navDrawerItems;
 	
-	public NavDrawerListAdapter(Context context, ArrayList<NavDrawerItem> navDrawerItems){
+	public NavMenuDrawerAdapter(Context context, ArrayList<NavMenuDrawerItem> navDrawerItems){
 		this.context = context;
 		this.navDrawerItems = navDrawerItems;
 	}

@@ -4,9 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -32,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.unileon.happycow.R;
-import es.unileon.happycow.controller.guiAntonio.MainActivity;
+import es.unileon.happycow.controller.vetgui.MainActivity;
 import es.unileon.happycow.database.Database;
 import es.unileon.happycow.model.Rol;
 

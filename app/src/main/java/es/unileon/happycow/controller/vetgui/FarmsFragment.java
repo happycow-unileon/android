@@ -1,8 +1,6 @@
-package es.unileon.happycow.controller.guiAntonio;
+package es.unileon.happycow.controller.vetgui;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -10,10 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -21,11 +16,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.unileon.happycow.utils.list.EntradaExcel;
+import es.unileon.happycow.utils.list.EntradaCardFarm;
 import es.unileon.happycow.utils.list.EntradaHeader;
 import es.unileon.happycow.utils.list.EntradaLista;
 import es.unileon.happycow.utils.list.ListAdapter;
-import es.unileon.happycow.utils.list.model.CardFarmItem;
 import es.unileon.happycow.R;
 
 public class FarmsFragment extends Fragment {
@@ -57,7 +51,7 @@ public class FarmsFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardFarmsList.add(new CardFarmItem("Rancho " +i , "7492433-HTR-" + i,"Antonio Molina",
+                cardFarmsList.add(new EntradaCardFarm("Rancho " +i , "7492433-HTR-" + i,"Antonio Molina",
                         "75674545-W","567", String.valueOf(i)));
                 i++;
                 adapter.notifyDataSetChanged();

@@ -1,4 +1,4 @@
-package es.unileon.happycow.controller.guiAntonio;
+package es.unileon.happycow.controller.vetgui;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -18,8 +18,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import es.unileon.happycow.R;
-import es.unileon.happycow.utils.NavDrawerListAdapter;
-import es.unileon.happycow.utils.list.model.NavDrawerItem;
+import es.unileon.happycow.utils.navigation.menu.NavMenuDrawerItem;
+import es.unileon.happycow.utils.navigation.menu.adapter.NavMenuDrawerAdapter;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
@@ -37,8 +37,8 @@ public class MainActivity extends Activity {
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
 
-    private ArrayList<NavDrawerItem> navDrawerItems;
-    private NavDrawerListAdapter adapter;
+    private ArrayList<NavMenuDrawerItem> navDrawerItems;
+    private NavMenuDrawerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +57,19 @@ public class MainActivity extends Activity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
-        navDrawerItems = new ArrayList<NavDrawerItem>();
+        navDrawerItems = new ArrayList<NavMenuDrawerItem>();
 
         // adding nav drawer items to array
         // Farms
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        navDrawerItems.add(new NavMenuDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         // Add farm
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new NavMenuDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         // Enable farm
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        navDrawerItems.add(new NavMenuDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
         // Disable farm
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+        navDrawerItems.add(new NavMenuDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
         // Export
-        navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
+        navDrawerItems.add(new NavMenuDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
 
 
         // Recycle the typed array
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
         mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
         // setting the nav drawer list adapter
-        adapter = new NavDrawerListAdapter(getApplicationContext(),
+        adapter = new NavMenuDrawerAdapter(getApplicationContext(),
                 navDrawerItems);
         mDrawerList.setAdapter(adapter);
 

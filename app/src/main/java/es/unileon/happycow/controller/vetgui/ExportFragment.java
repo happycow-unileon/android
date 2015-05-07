@@ -1,4 +1,4 @@
-package es.unileon.happycow.controller.guiAntonio;
+package es.unileon.happycow.controller.vetgui;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,14 +9,14 @@ import android.view.ViewGroup;
 
 import es.unileon.happycow.R;
 
-public class EnableFarmFragment extends Fragment {
+public class ExportFragment extends Fragment {
 
-    public EnableFarmFragment(){}
+    public ExportFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_enable, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_export, container, false);
         return rootView;
     }
 }
