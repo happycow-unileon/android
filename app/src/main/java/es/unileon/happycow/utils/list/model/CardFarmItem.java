@@ -15,6 +15,7 @@ public class CardFarmItem extends EntradaLista{
     private String farmName, farmID, farmerName, farmerID, numCows, numEvaluations;
 
     public CardFarmItem(int image, String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
+        super();
         this.image = image;
         this.farmName = farmName;
         this.farmID = farmID;
@@ -25,6 +26,7 @@ public class CardFarmItem extends EntradaLista{
     }
 
     public CardFarmItem(String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
+        super();
         this.farmName = farmName;
         this.farmID = farmID;
         this.farmerName = farmerName;
@@ -50,11 +52,15 @@ public class CardFarmItem extends EntradaLista{
 
             //pillo los elementos de la vista y los guardo en el holder que queda guardado en el view
             holder.farmerID = (TextView) view.findViewById(R.id.farmerID);
+            holder.farmerName = (TextView) view.findViewById(R.id.farmerName);
             holder.farmName = (TextView) view.findViewById(R.id.farmName);
             holder.farmID= (TextView) view.findViewById(R.id.farmID);
             holder.numCows = (TextView) view.findViewById(R.id.numCows);
             holder.numEvaluations = (TextView) view.findViewById(R.id.numEvaluations);
             holder.image = (ImageView) view.findViewById(R.id.iconFarmer);
+
+
+
 
             view.setTag(holder);
         }
@@ -66,7 +72,7 @@ public class CardFarmItem extends EntradaLista{
         holder.farmID.setText("Farm ID: " + farmID);
         holder.numCows.setText("Number cows: " + numCows);
         holder.numEvaluations.setText("Evaluations: " + numEvaluations);
-        holder.image.setImageResource(image);
+        holder.image.setImageResource(R.drawable.icon_farmer);
 
         return view;
     }

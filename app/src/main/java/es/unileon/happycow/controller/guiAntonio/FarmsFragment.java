@@ -21,6 +21,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.unileon.happycow.utils.list.EntradaExcel;
 import es.unileon.happycow.utils.list.EntradaHeader;
 import es.unileon.happycow.utils.list.EntradaLista;
 import es.unileon.happycow.utils.list.ListAdapter;
@@ -32,7 +33,7 @@ public class FarmsFragment extends Fragment {
     private ListView listViewFarms;
     static int i = 0;
     private ListAdapter adapter;
-
+    static List<EntradaLista> cardFarmsList = new ArrayList<>();
     public FarmsFragment(){
 
     }
@@ -43,10 +44,12 @@ public class FarmsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_farms, container, false);
         listViewFarms = (ListView) rootView.findViewById(R.id.listViewFarms);
 
-        final List<EntradaLista> cardFarmsList = new ArrayList<>();
+
         cardFarmsList.add(new EntradaHeader());
-        adapter=new ListAdapter(this.getActivity(),cardFarmsList);
+
+        adapter=new ListAdapter(getActivity(), cardFarmsList);
         listViewFarms.setAdapter(adapter);
+
 
         registerForContextMenu(listViewFarms);
 
@@ -60,6 +63,7 @@ public class FarmsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+
 
 
         return rootView;
