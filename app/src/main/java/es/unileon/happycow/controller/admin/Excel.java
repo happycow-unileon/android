@@ -6,12 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,17 +18,14 @@ import java.util.List;
 
 import es.unileon.happycow.R;
 import es.unileon.happycow.database.Database;
-import es.unileon.happycow.handler.IdFarm;
 import es.unileon.happycow.handler.IdUser;
 import es.unileon.happycow.model.Farm;
 import es.unileon.happycow.model.User;
-import es.unileon.happycow.model.composite.Evaluation;
 import es.unileon.happycow.model.excel.DataExcel;
 import es.unileon.happycow.model.facade.InterfaceEvaluationModel;
 import es.unileon.happycow.utils.expandableList.ExpandableListAdapter;
-import es.unileon.happycow.utils.list.EntradaExcel;
+import es.unileon.happycow.utils.list.rows.EntradaExcel;
 import es.unileon.happycow.utils.list.EntradaLista;
-import es.unileon.happycow.utils.list.ListAdapter;
 
 /**
  * A simple {@link Fragment} subclass.

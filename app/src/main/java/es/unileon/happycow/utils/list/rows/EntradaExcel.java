@@ -1,4 +1,4 @@
-package es.unileon.happycow.utils.list;
+package es.unileon.happycow.utils.list.rows;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,18 +7,21 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import es.unileon.happycow.R;
+import es.unileon.happycow.utils.list.EntradaLista;
+import es.unileon.happycow.utils.list.Rows;
+import es.unileon.happycow.utils.list.holders.ExcelHolder;
 
 /**
  * Ejemplo de fila. Para cada fila se necesita un xml para el aspecto de la fila
  * y un holder (ejemplo ExcelHolder)
  * Created by dorian on 24/04/15.
  */
-public class EntradaExcel  extends EntradaLista{
+public class EntradaExcel  extends EntradaLista {
     public boolean selected;
     public String name;
 
     public EntradaExcel(String name, boolean selected) {
-        super();
+        super(Rows.EXCEL);
         this.selected = selected;
         this.name = name;
     }

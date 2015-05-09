@@ -14,10 +14,18 @@ import java.util.Objects;
 public abstract class EntradaLista {
     private static long idEntradaLista=0;
     private long id;
-    public EntradaLista(){
+    private Rows typeRow;
+
+    public EntradaLista(Rows typeRow){
         id=idEntradaLista;
         idEntradaLista++;
+        this.typeRow=typeRow;
     }
+
+    public Rows getTypeRow(){
+        return typeRow;
+    }
+
     public abstract View onView(LayoutInflater inflater, View view, ViewGroup viewGroup);
     public abstract View onViewExpandable(LayoutInflater inflater, View view, ViewGroup viewGroup, boolean isExpand);
 

@@ -3,27 +3,9 @@
         android:layout_height="match_parent"
         android:background="@android:color/transparent">
 
-        <!--<TextView
-            android:id="@+id/txtLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="16dp"
-            android:text="Farms"/>
-
-        <ImageView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtLabel"
-            android:src="@drawable/icon_farm"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"/>-->
-
-
-
-
         <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/listViewFarms"/>
 
 

@@ -1,4 +1,4 @@
-package es.unileon.happycow.utils.list;
+package es.unileon.happycow.utils.list.holders;
 
 
 import android.widget.CheckBox;

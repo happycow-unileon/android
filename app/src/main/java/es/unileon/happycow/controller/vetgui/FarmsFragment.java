@@ -16,8 +16,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.unileon.happycow.utils.list.EntradaCardFarm;
-import es.unileon.happycow.utils.list.EntradaHeader;
+import es.unileon.happycow.utils.list.rows.EntradaCardFarm;
+import es.unileon.happycow.utils.list.rows.EntradaHeader;
 import es.unileon.happycow.utils.list.EntradaLista;
 import es.unileon.happycow.utils.list.ListAdapter;
 import es.unileon.happycow.R;

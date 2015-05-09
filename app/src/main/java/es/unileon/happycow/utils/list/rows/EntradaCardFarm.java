@@ -1,4 +1,4 @@
-package es.unileon.happycow.utils.list;
+package es.unileon.happycow.utils.list.rows;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +7,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.unileon.happycow.R;
-import es.unileon.happycow.utils.list.CardFarmHolder;
 import es.unileon.happycow.utils.list.EntradaLista;
+import es.unileon.happycow.utils.list.Rows;
+import es.unileon.happycow.utils.list.holders.CardFarmHolder;
 
-public class EntradaCardFarm extends EntradaLista{
+public class EntradaCardFarm extends EntradaLista {
     private int image;
     private String farmName, farmID, farmerName, farmerID, numCows, numEvaluations;
 
     public EntradaCardFarm(int image, String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
-        super();
+        super(Rows.CARD_FARM);
         this.image = image;
         this.farmName = farmName;
         this.farmID = farmID;
@@ -26,7 +27,7 @@ public class EntradaCardFarm extends EntradaLista{
     }
 
     public EntradaCardFarm(String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
-        super();
+        super(Rows.CARD_FARM);
         this.farmName = farmName;
         this.farmID = farmID;
         this.farmerName = farmerName;

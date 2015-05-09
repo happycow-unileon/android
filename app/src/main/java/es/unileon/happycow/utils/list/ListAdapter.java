@@ -13,6 +13,7 @@ import java.util.List;
  * Created by dorian on 24/04/15.
  */
 public class ListAdapter extends BaseAdapter {
+    private static final int numberRows = Rows.values().length;
     private List<EntradaLista> list;
     private LayoutInflater inflater;
 
@@ -35,6 +36,16 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public long getItemId(int i) {
         return i;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return numberRows;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return list.get(position).getTypeRow().ordinal();
     }
 
     @Override
