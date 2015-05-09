@@ -24,6 +24,7 @@
         android:layout_height="fill_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:id="@+id/addFarmLinearLayout">
 
         <TextView
@@ -62,6 +63,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Farm address"
+            android:id="@+id/textViewFarmAddress" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextFarmAddress" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Farm ID"
             android:id="@+id/textViewFarmID" />
 
@@ -83,6 +95,17 @@
             android:ems="10"
             android:id="@+id/editTextCowsNum"
             android:editable="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other data"
+            android:id="@+id/textViewOtherData" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextFarmName" />
 
         <Button
             android:layout_width="wrap_content"
