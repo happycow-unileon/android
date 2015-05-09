@@ -75,7 +75,7 @@ public class AddFarmFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                saveFarm();
             }
         });
         return rootView;
