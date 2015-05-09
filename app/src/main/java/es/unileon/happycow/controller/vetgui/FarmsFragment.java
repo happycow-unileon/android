@@ -14,8 +14,11 @@ import android.widget.ListView;
 
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
+import es.unileon.happycow.database.Database;
+import es.unileon.happycow.model.Farm;
 import es.unileon.happycow.utils.list.rows.EntradaCardFarm;
 import es.unileon.happycow.utils.list.rows.EntradaHeader;
 import es.unileon.happycow.utils.list.EntradaLista;
@@ -40,6 +43,10 @@ public class FarmsFragment extends Fragment {
 
 
         cardFarmsList.add(new EntradaHeader());
+        LinkedList<Farm> listFarms= Database.getInstance(null).getListFarms();
+        for(Farm farm:listFarms){
+            cardFarmsList.add(new EntradaCardFarm(farm));
+        }
 
         adapter=new ListAdapter(getActivity(), cardFarmsList);
         listViewFarms.setAdapter(adapter);
@@ -51,10 +58,10 @@ public class FarmsFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardFarmsList.add(new EntradaCardFarm("Rancho " +i , "7492433-HTR-" + i,"Antonio Molina",
-                        "75674545-W","567", String.valueOf(i)));
-                i++;
-                adapter.notifyDataSetChanged();
+//                cardFarmsList.add(new EntradaCardFarm("Rancho " +i , "7492433-HTR-" + i,"Antonio Molina",
+//                        "75674545-W","567", String.valueOf(i)));
+//                i++;
+//                adapter.notifyDataSetChanged();
             }
         });
 

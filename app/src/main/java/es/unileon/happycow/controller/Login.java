@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.unileon.happycow.R;
-import es.unileon.happycow.controller.vetgui.MainActivity;
+import es.unileon.happycow.controller.vetgui.ListFarms;
 import es.unileon.happycow.database.Database;
 import es.unileon.happycow.model.Rol;
 
@@ -116,7 +116,7 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 //        }
 
         //Intent i = new Intent (this, Evaluation.class);
-        Intent i = new Intent (this, MainActivity.class);
+        Intent i = new Intent (this, ListFarms.class);
         //i.putExtra("nombre", campoNombre.getText()+"");
         startActivity(i);
     }
@@ -321,6 +321,7 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
+                Database.getInstance(null).login("dorian", "dorian");
                 loginSucessful();
             } else {
                 if(error.contains("Contraseña")) {

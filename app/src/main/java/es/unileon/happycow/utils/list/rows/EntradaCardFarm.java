@@ -7,34 +7,41 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.unileon.happycow.R;
+import es.unileon.happycow.model.Farm;
 import es.unileon.happycow.utils.list.EntradaLista;
 import es.unileon.happycow.utils.list.Rows;
 import es.unileon.happycow.utils.list.holders.CardFarmHolder;
 
 public class EntradaCardFarm extends EntradaLista {
-    private int image;
-    private String farmName, farmID, farmerName, farmerID, numCows, numEvaluations;
+    //private int image;
+    private Farm farm;
+    //private String farmName, farmID, farmerName, farmerID, numCows, numEvaluations;
 
-    public EntradaCardFarm(int image, String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
+    public EntradaCardFarm(Farm farm){
         super(Rows.CARD_FARM);
-        this.image = image;
-        this.farmName = farmName;
-        this.farmID = farmID;
-        this.farmerName = farmerName;
-        this.farmerID = farmerID;
-        this.numCows = numCows;
-        this.numEvaluations = numEvaluations;
+        this.farm=farm;
     }
 
-    public EntradaCardFarm(String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
-        super(Rows.CARD_FARM);
-        this.farmName = farmName;
-        this.farmID = farmID;
-        this.farmerName = farmerName;
-        this.farmerID = farmerID;
-        this.numCows = numCows;
-        this.numEvaluations = numEvaluations;
-    }
+//    public EntradaCardFarm(int image, String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
+//        super(Rows.CARD_FARM);
+//        this.image = image;
+//        this.farmName = farmName;
+//        this.farmID = farmID;
+//        this.farmerName = farmerName;
+//        this.farmerID = farmerID;
+//        this.numCows = numCows;
+//        this.numEvaluations = numEvaluations;
+//    }
+//
+//    public EntradaCardFarm(String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
+//        super(Rows.CARD_FARM);
+//        this.farmName = farmName;
+//        this.farmID = farmID;
+//        this.farmerName = farmerName;
+//        this.farmerID = farmerID;
+//        this.numCows = numCows;
+//        this.numEvaluations = numEvaluations;
+//    }
 
 
     @Override
@@ -60,19 +67,16 @@ public class EntradaCardFarm extends EntradaLista {
             holder.numEvaluations = (TextView) view.findViewById(R.id.numEvaluations);
             holder.image = (ImageView) view.findViewById(R.id.iconFarmer);
 
-
-
-
             view.setTag(holder);
         }
 
         //relleno los datos de la fila
-        holder.farmerName.setText(farmerName);
-        holder.farmerID.setText(farmerID);
-        holder.farmName.setText("Farm name: " + farmName);
-        holder.farmID.setText("Farm ID: " + farmID);
-        holder.numCows.setText("Number cows: " + numCows);
-        holder.numEvaluations.setText("Evaluations: " + numEvaluations);
+        holder.farmerName.setText(farm.getFarmerName());
+        holder.farmerID.setText(farm.getDniFarmer());
+        holder.farmName.setText("Farm name: " + farm.getFarmName());
+        holder.farmID.setText("Farm ID: " + farm.getFarmIdentifier());
+        holder.numCows.setText("Number cows: " + farm.getCowNumber());
+        holder.numEvaluations.setText("Evaluations: " + farm.getListEvaluation().size());
         holder.image.setImageResource(R.drawable.icon_farmer);
 
         return view;

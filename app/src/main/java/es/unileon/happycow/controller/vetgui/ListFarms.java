@@ -22,7 +22,7 @@ import es.unileon.happycow.utils.navigation.menu.NavMenuDrawerItem;
 import es.unileon.happycow.utils.navigation.menu.adapter.NavMenuDrawerAdapter;
 
 @SuppressWarnings("deprecation")
-public class MainActivity extends Activity {
+public class ListFarms extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
