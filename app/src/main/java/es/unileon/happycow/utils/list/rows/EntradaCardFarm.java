@@ -22,28 +22,6 @@ public class EntradaCardFarm extends EntradaLista {
         this.farm=farm;
     }
 
-//    public EntradaCardFarm(int image, String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
-//        super(Rows.CARD_FARM);
-//        this.image = image;
-//        this.farmName = farmName;
-//        this.farmID = farmID;
-//        this.farmerName = farmerName;
-//        this.farmerID = farmerID;
-//        this.numCows = numCows;
-//        this.numEvaluations = numEvaluations;
-//    }
-//
-//    public EntradaCardFarm(String farmName, String farmID, String farmerName, String farmerID, String numCows, String numEvaluations) {
-//        super(Rows.CARD_FARM);
-//        this.farmName = farmName;
-//        this.farmID = farmID;
-//        this.farmerName = farmerName;
-//        this.farmerID = farmerID;
-//        this.numCows = numCows;
-//        this.numEvaluations = numEvaluations;
-//    }
-
-
     @Override
     public View onView(LayoutInflater inflater, View view, ViewGroup parent) {
         CardFarmHolder holder=null;
@@ -86,4 +64,14 @@ public class EntradaCardFarm extends EntradaLista {
     public View onViewExpandable(LayoutInflater inflater, View view, ViewGroup viewGroup, boolean isExpand) {
         return onView(inflater,view, viewGroup);
     }
+
+    public Farm getFarm() {
+        return farm;
+    }
+
+    public void setFarm(Farm farm) {
+        this.farm = farm;
+    }
+
+
 }

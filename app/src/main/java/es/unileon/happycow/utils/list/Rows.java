@@ -6,5 +6,6 @@ package es.unileon.happycow.utils.list;
 public enum Rows {
     HEADER,
     CARD_FARM,
+    CARD_EVALUATION,
     EXCEL
 }

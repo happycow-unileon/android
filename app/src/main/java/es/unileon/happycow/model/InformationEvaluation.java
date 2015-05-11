@@ -3,7 +3,7 @@ package es.unileon.happycow.model;
 import es.unileon.happycow.handler.IdFarm;
 import es.unileon.happycow.handler.IdHandler;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *

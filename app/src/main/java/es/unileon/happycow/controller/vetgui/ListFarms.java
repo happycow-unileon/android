@@ -18,11 +18,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import es.unileon.happycow.R;
+import es.unileon.happycow.model.Farm;
 import es.unileon.happycow.utils.navigation.menu.NavMenuDrawerItem;
 import es.unileon.happycow.utils.navigation.menu.adapter.NavMenuDrawerAdapter;
 
 @SuppressWarnings("deprecation")
-public class ListFarms extends Activity {
+public class ListFarms extends Activity implements FarmsFragment.FarmListener {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -112,6 +113,18 @@ public class ListFarms extends Activity {
 
     }
 
+    @Override
+    public void onFarmSelected(Farm farm) {
+
+
+        EvaluationsFragment fragment = new EvaluationsFragment();
+        fragment.setFarm(farm);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+
+    }
+
     /**
      * Slide menu item click listener
      * */
@@ -166,9 +179,13 @@ public class ListFarms extends Activity {
         switch (position) {
             case 0:
                 fragment = new FarmsFragment();
+                FarmsFragment farmsFragment = (FarmsFragment)fragment;
+                farmsFragment.setFarmListener(this);
                 break;
             case 1:
                 fragment = new AddFarmFragment();
+
+
                 break;
             case 2:
                 fragment = new EnableFarmFragment();
@@ -179,7 +196,6 @@ public class ListFarms extends Activity {
             case 4:
                 fragment = new ExportFragment();
                 break;
-
             default:
                 break;
         }
@@ -202,8 +218,8 @@ public class ListFarms extends Activity {
 
     @Override
     public void setTitle(CharSequence title) {
-        //mTitle = title;
-        //getActionBar().setTitle(mTitle);
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
     }
 
     /**

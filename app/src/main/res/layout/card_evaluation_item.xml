@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:id="@+id/cardEvaluationItemLayout">
+
+
+
+
+    <ImageView
+        android:layout_width="115dp"
+        android:layout_height="135dp"
+        android:id="@+id/iconEvaluation"
+        android:src="@drawable/evaluation"
+        android:layout_below="@+id/averageEvaluation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginRight="5dp"/>
+
+    <TextView
+        android:text="Average: 67.6"
+        android:id="@+id/averageEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:text="Date: 5/6/2015"
+        android:id="@+id/dateEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <TextView
+        android:text="Feeding: 5.6"
+        android:id="@+id/feedingEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/averageEvaluation"
+        android:layout_toRightOf="@+id/iconEvaluation"
+        android:layout_toEndOf="@+id/iconEvaluation" />
+
+    <TextView
+        android:text="Health: 1.5"
+        android:id="@+id/healthEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/feedingEvaluation"
+        android:layout_toRightOf="@+id/iconEvaluation"
+        android:layout_toEndOf="@+id/iconEvaluation" />
+
+
+    <TextView
+        android:text="Behaviour: 5.6"
+        android:id="@+id/behaviourEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/healthEvaluation"
+        android:layout_toRightOf="@+id/iconEvaluation"
+        android:layout_toEndOf="@+id/iconEvaluation" />
+
+    <TextView
+        android:text="Comfortable: 5.6"
+        android:id="@+id/comfortableEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/behaviourEvaluation"
+        android:layout_toRightOf="@+id/iconEvaluation"
+        android:layout_toEndOf="@+id/iconEvaluation" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iconNumberCows"
+        android:src="@drawable/cow"
+        android:layout_alignTop="@+id/numCowsEvaluation"
+        android:layout_toLeftOf="@+id/numCowsEvaluation"
+        android:layout_toStartOf="@+id/numCowsEvaluation" />
+
+    <TextView
+        android:text="234"
+        android:id="@+id/numCowsEvaluation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/comfortableEvaluation"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

@@ -6,7 +6,8 @@ import es.unileon.happycow.model.table.Entity;
 
 public class Evaluation extends Composite {
 	private static final Entity TYPE = Entity.EVALUATION;
-        private InformationEvaluation info;
+
+    private InformationEvaluation info;
 	
 	public Evaluation(IdHandler idHandler, InformationEvaluation info) {
 		super(idHandler);
@@ -28,4 +29,11 @@ public class Evaluation extends Composite {
 		return TYPE;
 	}
 
+    public InformationEvaluation getInfo() {
+        return info;
+    }
+
+    public void setInfo(InformationEvaluation info) {
+        this.info = info;
+    }
 }
