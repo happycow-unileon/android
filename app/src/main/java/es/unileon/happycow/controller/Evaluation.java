@@ -138,19 +138,6 @@ public class Evaluation extends FragmentActivity implements ActionBar.TabListene
 //        panel.setPonderationCategory(model.getWeighing(new IdCategory(panel.getSelectedCategory())));
 //    }
 //
-//    private void setNumberCows() {
-////        Farm farm = Database.getInstance(null).getFarm(model.getInformation().getIdFarm());
-//        int cows = EvaluationAlgorithm.necesaryNumberOfCows(model.getInformation().getNumberCows());
-//        panel.setNumberCow(cows);
-//    }
-//
-//    public void addCriterion(String criterion) {
-//        IdHandler category = new IdCategory(panel.getSelectedCategory());
-//        Criterion cri = Database.getInstance(null).getCriterion(new IdCriterion(criterion));
-//        model.add(category, cri);
-////        panel.addCriterion(criterion);
-//    }
-//
 //    public void removeCriterion(String criterion) {
 //        model.remove(new IdCriterion(criterion));
 ////        panel.removeValorations();
@@ -181,27 +168,6 @@ public class Evaluation extends FragmentActivity implements ActionBar.TabListene
 ////            panel.setModelValoration(list);
 ////        }
 ////    }
-//
-//    public void changeCategory() {
-//        IdHandler category = new IdCategory(panel.getSelectedCategory());
-//        panel.setPonderationCategory(model.getWeighing(category));
-//        if(panel.getCriterion()==null){
-//            panel.deshabilitarValoraciones();
-//        }
-//    }
-//
-//    public void setPonderationCategory(float ponderation) {
-//        IdHandler category = new IdCategory(panel.getSelectedCategory());
-//        model.setWeighing(category, ponderation);
-//        panel.setPonderationCategory(ponderation);
-//    }
-//
-//    public void setPonderationCriterion(float ponderation) {
-//        IdHandler criterion = new IdCriterion(panel.getCriterion());
-//        model.setWeighing(criterion, ponderation);
-//        panel.setPonderationCriterion(ponderation);
-//    }
-//
 //    public void saveValoration() {
 //        if (newEvaluation) {
 //            Database.getInstance(null).saveEvaluation(model);
