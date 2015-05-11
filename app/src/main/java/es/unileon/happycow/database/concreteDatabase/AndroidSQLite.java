@@ -809,12 +809,9 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
 
     @Override
     public LinkedList<Criterion> getListCriterion(Category category) {
-        if (!isCriterionInitialized()) {
-            //criterionInitialized = true;
-
-            String args[]={category.toString()};
+            String args[]={Category.getName(category)};
             result = connection.rawQuery("SELECT * FROM CRITERION WHERE CATEGORIA=?",args);
-
+            LinkedList<Criterion> criterionsCategory=new LinkedList<>();
             while (result.moveToNext()) {
                 Criterion criterion = new Criterion(
                         result.getString(result.getColumnIndex("NOMBRECRITERIO")),
@@ -822,10 +819,9 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
                         result.getString(result.getColumnIndex("DESCRIPCION")),
                         result.getString(result.getColumnIndex("HELP")));
 
-                criterions.add(criterion);
+                criterionsCategory.add(criterion);
             }
-        }
-        return criterions.getList();
+        return criterionsCategory;
     }
 
     @Override

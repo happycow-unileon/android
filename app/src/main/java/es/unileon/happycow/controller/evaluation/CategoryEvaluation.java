@@ -81,8 +81,13 @@ public class CategoryEvaluation extends Fragment {
         valoration=(TextView)rootView.findViewById(R.id.valorationValue);
 
         criterions=(Spinner)rootView.findViewById(R.id.spinnerCriterion);
-        criterions.setAdapter(new ArrayAdapter<Criterion>(getActivity(), android.R.layout.simple_list_item_1,
-                Database.getInstance(null).getListCriterion(category)));
+        LinkedList<Criterion> list=Database.getInstance(null).getListCriterion(category);
+        LinkedList<String> listCriterion=new LinkedList<>();
+        for(Criterion cri : list){
+            listCriterion.add(cri.getName());
+        }
+        criterions.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,
+                listCriterion));
 
         return rootView;
     }
