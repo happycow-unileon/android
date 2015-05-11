@@ -116,12 +116,12 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
     @Override
     public void onFarmSelected(Farm farm) {
 
+
         EvaluationsFragment fragment = new EvaluationsFragment();
         fragment.setFarm(farm);
+
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
-
-
 
     }
 
@@ -179,9 +179,13 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
         switch (position) {
             case 0:
                 fragment = new FarmsFragment();
+                FarmsFragment farmsFragment = (FarmsFragment)fragment;
+                farmsFragment.setFarmListener(this);
                 break;
             case 1:
                 fragment = new AddFarmFragment();
+
+
                 break;
             case 2:
                 fragment = new EnableFarmFragment();
@@ -192,7 +196,6 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
             case 4:
                 fragment = new ExportFragment();
                 break;
-
             default:
                 break;
         }

@@ -122,6 +122,13 @@ public class FarmsFragment extends Fragment {
         void onFarmSelected(Farm farm);
     }
 
+    public FarmsFragment.FarmListener getFarmListener() {
+        return farmListener;
+    }
+
+    public void setFarmListener(FarmsFragment.FarmListener farmListener) {
+        this.farmListener = farmListener;
+    }
 
 
 }
