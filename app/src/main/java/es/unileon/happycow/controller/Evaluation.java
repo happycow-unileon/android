@@ -3,12 +3,17 @@ package es.unileon.happycow.controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import es.unileon.happycow.R;
 import es.unileon.happycow.controller.admin.ManagerPanelEvaluation;
+import es.unileon.happycow.controller.admin.TabsPagerAdapter;
+import es.unileon.happycow.controller.evaluation.CategoryEvaluation;
 import es.unileon.happycow.database.Database;
 import es.unileon.happycow.handler.Category;
 import es.unileon.happycow.handler.IdCategory;
@@ -25,7 +30,7 @@ import es.unileon.happycow.strategy.EvaluationAlgorithm;
 /**
  * Created by dorian on 1/05/15.
  */
-public class Evaluation extends Activity {
+public class Evaluation extends FragmentActivity implements ActionBar.TabListener {
     private InterfaceEvaluationModel model;
     private boolean newEvaluation;
     private ManagerPanelEvaluation panel;
@@ -33,6 +38,26 @@ public class Evaluation extends Activity {
     private LinkedList<String> modelComboHealth = new LinkedList<>();
     private LinkedList<String> modelComboBehaviour = new LinkedList<>();
     private LinkedList<String> modelComboHouse = new LinkedList<>();
+
+    private ViewPager viewPager;
+    private TabsPagerAdapter mAdapter;
+
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+        // on tab selected
+        // show respected fragment view
+        viewPager.setCurrentItem(tab.getPosition());
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, android.support.v4.app.FragmentTransaction fragmentTransaction) {
+
+    }
 
 //    public Evaluation(InterfaceEvaluationModel model){
 //        this.model=model;
@@ -48,7 +73,7 @@ public class Evaluation extends Activity {
 //    }
 //
     private void common(){
-        panel=new ManagerPanelEvaluation(findViewById(android.R.id.content), this);
+        //panel=new ManagerPanelEvaluation(findViewById(android.R.id.content), this);
 
 //        setComboCriterion();
 //        setNumberCows();
@@ -70,6 +95,33 @@ public class Evaluation extends Activity {
         if(newEvaluation) {
             this.model = new EvaluationModel(newEvaluation, new IdFarm(farm));
         }
+
+        // Initilization
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+
+        viewPager.setAdapter(mAdapter);
+
+
+        CategoryEvaluation cat=new CategoryEvaluation();
+        cat.setCategory(Category.FOOD);
+        cat.setModel(model);
+        mAdapter.addPage(cat, Category.getName(Category.FOOD));
+
+        cat=new CategoryEvaluation();
+        cat.setCategory(Category.HEALTH);
+        cat.setModel(model);
+        mAdapter.addPage(cat, Category.getName(Category.HEALTH));
+
+        cat=new CategoryEvaluation();
+        cat.setCategory(Category.BEHAVIOUR);
+        cat.setModel(model);
+        mAdapter.addPage(cat, Category.getName(Category.BEHAVIOUR));
+
+        cat=new CategoryEvaluation();
+        cat.setCategory(Category.HOUSE);
+        cat.setModel(model);
+        mAdapter.addPage(cat, Category.getName(Category.HOUSE));
     }
 
 //    private void addAll(){
@@ -90,37 +142,6 @@ public class Evaluation extends Activity {
 ////        Farm farm = Database.getInstance(null).getFarm(model.getInformation().getIdFarm());
 //        int cows = EvaluationAlgorithm.necesaryNumberOfCows(model.getInformation().getNumberCows());
 //        panel.setNumberCow(cows);
-//    }
-//
-//    private void setComboCriterion() {
-//        LinkedList<Criterion> lista = Database.getInstance(null).getListCriterion();
-//        for (Criterion criterion : lista) {
-//            IdCategory id = (IdCategory) criterion.getCategory();
-//            switch (id.getCategory()) {
-//                case FOOD:
-//                    modelComboFood.add(criterion.getName());
-//                    break;
-//                case HEALTH:
-//                    modelComboHealth.add(criterion.getName());
-//                    break;
-//                case HOUSE:
-//                    modelComboHouse.add(criterion.getName());
-//                    break;
-//                case BEHAVIOUR:
-//                    modelComboBehaviour.add(criterion.getName());
-//                    break;
-//            }
-//        }
-//    }
-//
-//    public void addValoration(float valoration) {
-//        String nombre = panel.getCriterion();
-//        if (nombre != null) {
-//            IdHandler criterion = new IdCriterion(nombre);
-//            IdHandler category = new IdCategory(panel.getSelectedCategory());
-//            Valoration val = new Valoration(valoration);
-//            model.add(category, criterion, val);
-//        }
 //    }
 //
 //    public void addCriterion(String criterion) {

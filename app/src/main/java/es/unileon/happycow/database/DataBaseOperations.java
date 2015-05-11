@@ -1,5 +1,6 @@
 package es.unileon.happycow.database;
 
+import es.unileon.happycow.handler.Category;
 import es.unileon.happycow.handler.IdHandler;
 import es.unileon.happycow.model.composite.Criterion;
 import es.unileon.happycow.model.Farm;
@@ -150,6 +151,8 @@ public interface DataBaseOperations {
      * @return 
      */
     public Criterion getCriterion(IdHandler id);
+
+    public LinkedList<Criterion> getListCriterion(Category category);
 
     /**
      * METODO PRIVADO!! este método no ha de estar en la interfaz, pero ayuda

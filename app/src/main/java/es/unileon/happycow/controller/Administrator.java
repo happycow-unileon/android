@@ -21,7 +21,7 @@ public class Administrator extends FragmentActivity implements ActionBar.TabList
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     // Tab titles
-    private String[] tabs = { "Top Rated", "Games", "Movies" };
+    //private String[] tabs = { "Top Rated", "Games", "Movies" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

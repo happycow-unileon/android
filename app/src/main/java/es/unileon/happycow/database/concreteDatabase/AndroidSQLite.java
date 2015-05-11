@@ -808,6 +808,27 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
     }
 
     @Override
+    public LinkedList<Criterion> getListCriterion(Category category) {
+        if (!isCriterionInitialized()) {
+            //criterionInitialized = true;
+
+            String args[]={category.toString()};
+            result = connection.rawQuery("SELECT * FROM CRITERION WHERE CATEGORIA=?",args);
+
+            while (result.moveToNext()) {
+                Criterion criterion = new Criterion(
+                        result.getString(result.getColumnIndex("NOMBRECRITERIO")),
+                        new IdCategory(result.getString(result.getColumnIndex("CATEGORIA"))),
+                        result.getString(result.getColumnIndex("DESCRIPCION")),
+                        result.getString(result.getColumnIndex("HELP")));
+
+                criterions.add(criterion);
+            }
+        }
+        return criterions.getList();
+    }
+
+    @Override
     public boolean removeCriterion(IdHandler idCriterion) {
         String args[]={idCriterion.toString()};
         connection.delete("CRITERION","NOMBRECRITERIO=?", args);

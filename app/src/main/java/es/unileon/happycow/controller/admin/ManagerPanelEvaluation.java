@@ -24,37 +24,37 @@ import es.unileon.happycow.handler.Category;
  * Created by dorian on 1/05/15.
  */
 public class ManagerPanelEvaluation {
-    View view;
-    Evaluation controller;
-
-    Spinner category;
-    Spinner criterion;
-    EditText ponderationCategory;
-    EditText ponderationCriterion;
-    Button addValoration;
-
-    TextView valorationText;
-    int valoration;
-
-    ExpandableListView list;
-
-    public ManagerPanelEvaluation(View view, Evaluation controller){
-        this.view=view;
-        this.controller=controller;
-
-        category=(Spinner)view.findViewById(R.id.spinnerCategory);
-        criterion=(Spinner)view.findViewById(R.id.spinnerCriterion);
-
-        ponderationCategory=(EditText)view.findViewById(R.id.ponderationCategory);
-        ponderationCriterion=(EditText)view.findViewById(R.id.ponderationCriterion);
-
-        addValoration=(Button)view.findViewById(R.id.addValoration);
-
-        list=(ExpandableListView)view.findViewById(R.id.valorations);
-
-//        setComboCategory();
-//        addEvents();
-    }
+//    View view;
+//    Evaluation controller;
+//
+//    Spinner category;
+//    Spinner criterion;
+//    EditText ponderationCategory;
+//    EditText ponderationCriterion;
+//    Button addValoration;
+//
+//    TextView valorationText;
+//    int valoration;
+//
+//    ExpandableListView list;
+//
+//    public ManagerPanelEvaluation(View view, Evaluation controller){
+//        this.view=view;
+//        this.controller=controller;
+//
+//        category=(Spinner)view.findViewById(R.id.spinnerCategory);
+//        criterion=(Spinner)view.findViewById(R.id.spinnerCriterion);
+//
+//        ponderationCategory=(EditText)view.findViewById(R.id.ponderationCategory);
+//        ponderationCriterion=(EditText)view.findViewById(R.id.ponderationCriterion);
+//
+//        addValoration=(Button)view.findViewById(R.id.addValoration);
+//
+//        list=(ExpandableListView)view.findViewById(R.id.valorations);
+//
+////        setComboCategory();
+////        addEvents();
+//    }
 
 
 //    public void setNumberCow(int number){
