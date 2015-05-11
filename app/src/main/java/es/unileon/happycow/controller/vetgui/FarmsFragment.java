@@ -19,6 +19,7 @@ import java.util.List;
 
 import es.unileon.happycow.database.Database;
 import es.unileon.happycow.model.Farm;
+import es.unileon.happycow.utils.list.Rows;
 import es.unileon.happycow.utils.list.rows.EntradaCardFarm;
 import es.unileon.happycow.utils.list.rows.EntradaHeader;
 import es.unileon.happycow.utils.list.EntradaLista;
@@ -28,12 +29,14 @@ import es.unileon.happycow.R;
 public class FarmsFragment extends Fragment {
 
     private ListView listViewFarms;
-    static int i = 0;
+    private FarmListener farmListener;
     private ListAdapter adapter;
-    static List<EntradaLista> cardFarmsList = new ArrayList<>();
-    public FarmsFragment(){
+    private static List<EntradaLista> cardFarmsList = new ArrayList<>();
 
-    }
+    static int i = 0;
+
+
+    public FarmsFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +46,7 @@ public class FarmsFragment extends Fragment {
 
 
         cardFarmsList.add(new EntradaHeader());
-        LinkedList<Farm> listFarms= Database.getInstance(null).getListFarms();
+        final LinkedList<Farm> listFarms= Database.getInstance(null).getListFarms();
         for(Farm farm:listFarms){
             cardFarmsList.add(new EntradaCardFarm(farm));
         }
@@ -65,7 +68,20 @@ public class FarmsFragment extends Fragment {
             }
         });
 
+        listViewFarms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(listFarms != null) {
 
+                    EntradaLista entrada = (EntradaLista)adapter.getItem(i);
+
+                    if(entrada.getTypeRow() == Rows.CARD_FARM){
+                        EntradaCardFarm entradaFarm = (EntradaCardFarm)adapter.getItem(i);
+                        farmListener.onFarmSelected(entradaFarm.getFarm());
+                    }
+                }
+            }
+        });
 
         return rootView;
     }
@@ -101,5 +117,11 @@ public class FarmsFragment extends Fragment {
         }
 
     }
+
+    public interface FarmListener {
+        void onFarmSelected(Farm farm);
+    }
+
+
 
 }

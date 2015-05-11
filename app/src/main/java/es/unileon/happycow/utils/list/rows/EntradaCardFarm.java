@@ -86,4 +86,14 @@ public class EntradaCardFarm extends EntradaLista {
     public View onViewExpandable(LayoutInflater inflater, View view, ViewGroup viewGroup, boolean isExpand) {
         return onView(inflater,view, viewGroup);
     }
+
+    public Farm getFarm() {
+        return farm;
+    }
+
+    public void setFarm(Farm farm) {
+        this.farm = farm;
+    }
+
+
 }

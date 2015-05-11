@@ -18,11 +18,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import es.unileon.happycow.R;
+import es.unileon.happycow.model.Farm;
 import es.unileon.happycow.utils.navigation.menu.NavMenuDrawerItem;
 import es.unileon.happycow.utils.navigation.menu.adapter.NavMenuDrawerAdapter;
 
 @SuppressWarnings("deprecation")
-public class ListFarms extends Activity {
+public class ListFarms extends Activity implements FarmsFragment.FarmListener {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -109,6 +110,18 @@ public class ListFarms extends Activity {
             // on first time display view for first nav item
             displayView(0);
         }
+
+    }
+
+    @Override
+    public void onFarmSelected(Farm farm) {
+
+        EvaluationsFragment fragment = new EvaluationsFragment();
+        fragment.setFarm(farm);
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+
+
 
     }
 
@@ -202,8 +215,8 @@ public class ListFarms extends Activity {
 
     @Override
     public void setTitle(CharSequence title) {
-        //mTitle = title;
-        //getActionBar().setTitle(mTitle);
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
     }
 
     /**
