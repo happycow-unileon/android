@@ -28,7 +28,7 @@ public class EvaluationsFragment extends Fragment {
 
     private ListView listViewEvaluations;
     private ListAdapter adapter;
-    private List<EntradaLista> cardFarmsList = new ArrayList<>();
+    private List<EntradaLista> evaluationsList = new ArrayList<>();
     private Farm farm;
 
     public EvaluationsFragment(){
@@ -42,6 +42,9 @@ public class EvaluationsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_evaluations, container, false);
         listViewEvaluations= (ListView) rootView.findViewById(R.id.listViewEvaluations);
 
+        evaluationsList.add(new EntradaCardFarm(farm));
+        adapter=new ListAdapter(getActivity(), evaluationsList);
+        listViewEvaluations.setAdapter(adapter);
 
 
 
