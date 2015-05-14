@@ -41,6 +41,9 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
     private ArrayList<NavMenuDrawerItem> navDrawerItems;
     private NavMenuDrawerAdapter adapter;
 
+    private int numFragmentsNavMenu;
+    private Fragment fragmentsNavMenu[];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,9 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
         // nav drawer icons from resources
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
+
+        numFragmentsNavMenu = navMenuTitles.length;
+        fragmentsNavMenu = new Fragment[numFragmentsNavMenu];
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
@@ -127,7 +133,7 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
 
     /**
      * Slide menu item click listener
-     * */
+     */
     private class SlideMenuClickListener implements
             ListView.OnItemClickListener {
         @Override
@@ -172,32 +178,38 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
 
     /**
      * Diplaying fragment view for selected nav drawer list item
-     * */
-    private void displayView(int position) {
+     */
+    public void displayView(int position) {
         // update the main content by replacing fragments
         Fragment fragment = null;
-        switch (position) {
-            case 0:
-                fragment = new FarmsFragment();
-                FarmsFragment farmsFragment = (FarmsFragment)fragment;
-                farmsFragment.setFarmListener(this);
-                break;
-            case 1:
-                fragment = new AddFarmFragment();
 
+        if (position <= fragmentsNavMenu.length) {
+            if (fragmentsNavMenu[position] == null) {
+                switch (position) {
+                    case 0:
+                        FarmsFragment farmsFragment = new FarmsFragment();
+                        farmsFragment.setFarmListener(this);
+                        fragmentsNavMenu[0] = farmsFragment;
+                        break;
+                    case 1:
+                        fragmentsNavMenu[1] = new AddFarmFragment();
+                        break;
+                    case 2:
+                        fragmentsNavMenu[2]= new EnableFarmFragment();
+                        break;
+                    case 3:
+                        fragmentsNavMenu[3] = new DisableFarmFragment();
+                        break;
+                    case 4:
+                        fragmentsNavMenu[4] = new ExportFragment();
+                        break;
+                    default:
+                        break;
+                }
+            }
 
-                break;
-            case 2:
-                fragment = new EnableFarmFragment();
-                break;
-            case 3:
-                fragment = new DisableFarmFragment();
-                break;
-            case 4:
-                fragment = new ExportFragment();
-                break;
-            default:
-                break;
+            fragment = fragmentsNavMenu[position];
+
         }
 
         if (fragment != null) {

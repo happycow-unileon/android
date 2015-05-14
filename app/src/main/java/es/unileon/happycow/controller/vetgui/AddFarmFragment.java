@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,41 +21,6 @@ import es.unileon.happycow.model.Farm;
 public class AddFarmFragment extends Fragment {
     private TextView etFarmerName, etFarmerID, etFarmID, etFarmName, etCowsNum, etAddressFarm, etOtherData;
     private IdHandler idFarm;
-    //private AddFarmView addFarmView;
-
-    /*
-    private static class AddFarmView implements View.OnFocusChangeListener {
-
-
-        public AddFarmView(Activity activity){
-            etFarmerName = (TextView)activity.findViewById(R.id.editTextFarmerName);
-            etFarmerName.setOnFocusChangeListener(this);
-
-            etFarmerID = (TextView)activity.findViewById(R.id.editTextFarmerID);
-            etFarmerID.setOnFocusChangeListener(this);
-
-            etFarmName = (TextView)activity.findViewById(R.id.editTextFarmName);
-            etFarmName.setOnFocusChangeListener(this);
-
-            etFarmID = (TextView)activity.findViewById(R.id.editTextFarmID);
-            etFarmID.setOnFocusChangeListener(this);
-
-            etCowsNum = (TextView)activity.findViewById(R.id.editTextCowsNum);
-            etCowsNum.setOnFocusChangeListener(this);
-
-        }
-
-        @Override
-        public void onFocusChange(View v, boolean hasFocus) {
-            if (hasFocus){
-                v.setBackgroundResource(R.drawable.focus_border_style);
-            }else{
-                v.setBackgroundResource(R.drawable.lost_focus_border_style);
-            }
-        }
-
-    }
-*/
 
 
     public AddFarmFragment(){
@@ -71,6 +37,15 @@ public class AddFarmFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_add, container, false);
+
+        etFarmerName = (EditText)rootView.findViewById(R.id.editTextFarmerName);
+        etFarmerID = (EditText)rootView.findViewById(R.id.editTextFarmerID);
+        etFarmID = (EditText)rootView.findViewById(R.id.editTextFarmID);
+        etFarmName = (EditText)rootView.findViewById(R.id.editTextFarmName);
+        etCowsNum = (EditText)rootView.findViewById(R.id.editTextCowsNum);
+        etAddressFarm = (EditText)rootView.findViewById(R.id.editTextFarmAddress);
+        etOtherData = (EditText)rootView.findViewById(R.id.editTextOtherData);
+
         Button add=(Button)rootView.findViewById(R.id.buttonAddFarm);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,14 +53,13 @@ public class AddFarmFragment extends Fragment {
                 saveFarm();
             }
         });
+
         return rootView;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        //addFarmView = new AddFarmView(getActivity());
-
     }
 
 
@@ -117,8 +91,9 @@ public class AddFarmFragment extends Fragment {
                     toast1.show();
 
                 }else{
-                    //father.seeListFarm();
                     //volver a la lista de granjas una vez añadido
+                    ListFarms activity = (ListFarms) getActivity();
+                    activity.displayView(0);
                 }
             }else{
                 if(!Database.getInstance(null).newFarm(farm)){
@@ -128,8 +103,9 @@ public class AddFarmFragment extends Fragment {
 
                     toast1.show();
                 }else{
-                    //father.seeListFarm();
                     //volver a la lista de granjas una vez añadido
+                    ListFarms activity = (ListFarms) getActivity();
+                    activity.displayView(0);
                 }
             }
         }
@@ -154,11 +130,6 @@ public class AddFarmFragment extends Fragment {
             etCowsNum.setError("Debe introducir un número entero de vacas.");
             //errores.append("\nDebe introducir un número entero de vacas.");
         }
-
-        //if(!correct){
-            //JOptionPane.showMessageDialog(panel, errores, "Mala entrada", JOptionPane.WARNING_MESSAGE);
-        //}
-        //cambiar por borrar el setError cuando se recupera el foco en el campo
 
         return correct;
     }

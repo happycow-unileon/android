@@ -31,12 +31,9 @@ public class FarmsFragment extends Fragment {
     private ListView listViewFarms;
     private FarmListener farmListener;
     private ListAdapter adapter;
-    private static List<EntradaLista> cardFarmsList = new ArrayList<>();
-
-    static int i = 0;
-
-
-    public FarmsFragment(){}
+    private List<EntradaLista> cardFarmsList;
+    public FarmsFragment(){
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,12 +41,13 @@ public class FarmsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_farms, container, false);
         listViewFarms = (ListView) rootView.findViewById(R.id.listViewFarms);
 
-
+        cardFarmsList = new ArrayList<>();
         cardFarmsList.add(new EntradaHeader());
-        final LinkedList<Farm> listFarms= Database.getInstance(null).getListFarms();
+        LinkedList<Farm> listFarms= Database.getInstance(null).getListFarms();
         for(Farm farm:listFarms){
             cardFarmsList.add(new EntradaCardFarm(farm));
         }
+
 
         adapter=new ListAdapter(getActivity(), cardFarmsList);
         listViewFarms.setAdapter(adapter);
@@ -61,17 +59,15 @@ public class FarmsFragment extends Fragment {
         fabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                cardFarmsList.add(new EntradaCardFarm("Rancho " +i , "7492433-HTR-" + i,"Antonio Molina",
-//                        "75674545-W","567", String.valueOf(i)));
-//                i++;
-//                adapter.notifyDataSetChanged();
+                ListFarms activity = (ListFarms) getActivity();
+                activity.displayView(1);
             }
         });
 
         listViewFarms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(listFarms != null) {
+                if(adapter != null) {
 
                     EntradaLista entrada = (EntradaLista)adapter.getItem(i);
 
