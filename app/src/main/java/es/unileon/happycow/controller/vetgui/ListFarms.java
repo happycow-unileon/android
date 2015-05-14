@@ -44,10 +44,13 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
     private int numFragmentsNavMenu;
     private Fragment fragmentsNavMenu[];
 
+    private int lastPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        lastPosition=0;
 
         mTitle = mDrawerTitle = getTitle();
 

@@ -136,42 +136,42 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mUserView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String email = "dorian";//mUserView.getText().toString();
+        String password = "dorian"; //mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView;
-            cancel = true;
-        }
-
-        // Check for a valid email address.
-        if (TextUtils.isEmpty(email)) {
-            mUserView.setError(getString(R.string.error_field_required));
-            focusView = mUserView;
-            cancel = true;
-        } else if (!isEmailValid(email)) {
-            mUserView.setError(getString(R.string.error_invalid_email));
-            focusView = mUserView;
-            cancel = true;
-        }
-
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
-            focusView.requestFocus();
-        } else {
+//        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+//            mPasswordView.setError(getString(R.string.error_invalid_password));
+//            focusView = mPasswordView;
+//            cancel = true;
+//        }
+//
+//        // Check for a valid email address.
+//        if (TextUtils.isEmpty(email)) {
+//            mUserView.setError(getString(R.string.error_field_required));
+//            focusView = mUserView;
+//            cancel = true;
+//        } else if (!isEmailValid(email)) {
+//            mUserView.setError(getString(R.string.error_invalid_email));
+//            focusView = mUserView;
+//            cancel = true;
+//        }
+//
+//        if (cancel) {
+//            // There was an error; don't attempt login and focus the first
+//            // form field with an error.
+//            focusView.requestFocus();
+//        } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
-        }
+//        }
     }
 
     private boolean isEmailValid(String email) {
@@ -292,27 +292,16 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
 
         @Override
         protected Boolean doInBackground(Void... params) {
-//            try {
-//                // Simulate network access.
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e) {
-//                return false;
-//            }
+            error=Database.getInstance(null).login(mEmail, mPassword);
+            if(error.length()>0){
+                return false;
 
-            // TODO: attempt authentication against a network service.
-//            error=Database.getInstance(null).login(mEmail, mPassword);
-//            if(error.length()>0){
-//                return false;
-//
-//            }else{
-//                rolUser=Database.getInstance(null).getUser().getRol();
-//                return true;
-//                //login.setMessageError("Error en los datos de logueo, pruebe otra vez");
-//
-//            }
+            }else{
+                rolUser=Database.getInstance(null).getUser().getRol();
+                return true;
+                //login.setMessageError("Error en los datos de logueo, pruebe otra vez");
 
-            // TODO: register the new account here.
-            return true;
+            }
         }
 
         @Override
@@ -321,7 +310,6 @@ public class Login extends Activity implements LoaderCallbacks<Cursor> {
             showProgress(false);
 
             if (success) {
-                Database.getInstance(null).login("dorian", "dorian");
                 loginSucessful();
             } else {
                 if(error.contains("Contraseña")) {

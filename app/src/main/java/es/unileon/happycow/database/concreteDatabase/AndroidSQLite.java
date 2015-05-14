@@ -193,6 +193,7 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
         //cargamos los criterios
         getListCriterion();
         newUser(new User("Admin", "Admin", Rol.ADMINISTRADOR));
+        newUser(new User("dorian", "dorian", Rol.VETERINARIO));
         return false;
     }
 
