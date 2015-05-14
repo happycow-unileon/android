@@ -52,7 +52,6 @@ public class FarmsFragment extends Fragment {
         adapter=new ListAdapter(getActivity(), cardFarmsList);
         listViewFarms.setAdapter(adapter);
 
-
         registerForContextMenu(listViewFarms);
 
         ImageButton fabButton = (ImageButton) rootView.findViewById(R.id.fab_image_button);

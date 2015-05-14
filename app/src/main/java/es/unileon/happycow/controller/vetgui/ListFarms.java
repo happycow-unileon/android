@@ -121,14 +121,10 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
 
     @Override
     public void onFarmSelected(Farm farm) {
-
-
         EvaluationsFragment fragment = new EvaluationsFragment();
         fragment.setFarm(farm);
-
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
-
+        fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack(null).commit();
     }
 
     /**
@@ -215,17 +211,22 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
         if (fragment != null) {
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.frame_container, fragment).commit();
+                    .replace(R.id.frame_container, fragment).addToBackStack(null).commit();
 
             // update selected item and title, then close the drawer
             mDrawerList.setItemChecked(position, true);
             mDrawerList.setSelection(position);
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
+
+            lastPosition = position;
+
         } else {
             // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
         }
+
+
     }
 
     @Override
