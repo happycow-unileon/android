@@ -1,6 +1,5 @@
-package es.unileon.happycow.controller.vetgui;
+package es.unileon.happycow.controller.veterinary;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;

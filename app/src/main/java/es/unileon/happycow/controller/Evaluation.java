@@ -34,10 +34,6 @@ public class Evaluation extends FragmentActivity implements ActionBar.TabListene
     private InterfaceEvaluationModel model;
     private boolean newEvaluation;
     private ManagerPanelEvaluation panel;
-    private LinkedList<String> modelComboFood = new LinkedList<>();
-    private LinkedList<String> modelComboHealth = new LinkedList<>();
-    private LinkedList<String> modelComboBehaviour = new LinkedList<>();
-    private LinkedList<String> modelComboHouse = new LinkedList<>();
 
     private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;

@@ -15,7 +15,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.unileon.happycow.R;
-import es.unileon.happycow.controller.vetgui.ListFarms;
+import es.unileon.happycow.controller.veterinary.ListFarms;
 import es.unileon.happycow.database.Database;
 import es.unileon.happycow.model.Rol;
 

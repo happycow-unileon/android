@@ -23,6 +23,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
 
+        <activity android:name=".controller.Evaluation"
+            android:label="@string/title_activity_list_farm"
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+
 
         <activity
             android:name=".controller.Login"
@@ -35,12 +40,7 @@
         </activity>
 
         <activity
-            android:name=".controller.Evaluation"
-            android:label="@string/title_activity_list_farm" >
-        </activity>
-
-        <activity
-            android:name=".controller.vetgui.ListFarms"
+            android:name=".controller.veterinary.ListFarms"
             android:label="@string/app_name" >
         </activity>
 

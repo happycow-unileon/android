@@ -1,4 +1,4 @@
-package es.unileon.happycow.controller.vetgui;
+package es.unileon.happycow.controller.veterinary;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -124,7 +124,7 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
 
     @Override
     public void onFarmSelected(Farm farm) {
-        EvaluationsFragment fragment = new EvaluationsFragment();
+        ListEvaluationsFragment fragment = new ListEvaluationsFragment();
         fragment.setFarm(farm);
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).addToBackStack(null).commit();
