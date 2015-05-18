@@ -839,7 +839,7 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
             result = connection.rawQuery("SELECT MAX(IDEVALUATION)AS IDEVALUATION FROM EVALUATION",null);
 
             if (result.moveToFirst()) {
-                id = result.getInt(result.getColumnIndex("idevaluation")) + 1;
+                id = result.getInt(result.getColumnIndex("IDEVALUATION")) + 1;
             }
         return id;
     }

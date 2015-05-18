@@ -32,7 +32,9 @@ public class EntradaCardEvaluation extends EntradaLista {
         this.infoEvaluation = infoEvaluation;
     }
 
-
+    public InformationEvaluation getInfoEvaluation(){
+        return infoEvaluation;
+    }
 
     @Override
     public View onView(LayoutInflater inflater, View view, ViewGroup parent) {

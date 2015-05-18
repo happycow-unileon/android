@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -62,11 +63,28 @@ public class ListEvaluationsFragment extends Fragment {
         adapter=new ListAdapter(getActivity(), evaluationsList);
         listViewEvaluations.setAdapter(adapter);
 
+        listViewEvaluations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(adapter != null) {
+                    EntradaCardEvaluation entrada = (EntradaCardEvaluation) adapter.getItem(i);
+                    InformationEvaluation info=entrada.getInfoEvaluation();
+                    Intent intent = new Intent (ListEvaluationsFragment.this.getActivity(), Evaluation.class);
+                    intent.putExtra("newEvaluation", false);
+                    intent.putExtra("idEvaluation",info.getIdEvaluation().toString());
+                    intent.putExtra("idFarm",info.getIdFarm().toString());
+                    startActivity(intent);
+                }
+            }
+        });
+
         ImageButton button=(ImageButton)rootView.findViewById(R.id.fab_image_button_evaluations);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent (ListEvaluationsFragment.this.getActivity(), Evaluation.class);
+                i.putExtra("newEvaluation", true);
+                i.putExtra("idFarm", farm.getIdFarm().toString());
                 startActivity(i);
             }
         });

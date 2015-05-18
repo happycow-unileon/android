@@ -18,6 +18,7 @@ import es.unileon.happycow.database.Database;
 import es.unileon.happycow.handler.Category;
 import es.unileon.happycow.handler.IdCategory;
 import es.unileon.happycow.handler.IdCriterion;
+import es.unileon.happycow.handler.IdEvaluation;
 import es.unileon.happycow.handler.IdFarm;
 import es.unileon.happycow.handler.IdHandler;
 import es.unileon.happycow.model.composite.Criterion;
@@ -86,10 +87,12 @@ public class Evaluation extends FragmentActivity implements ActionBar.TabListene
         Intent intent = getIntent();
         newEvaluation=intent.getBooleanExtra("newEvaluation", false);
         int farm = intent.getIntExtra("IdFarm",0);
-        String idEvaluation=intent.getStringExtra("IdEvaluation");
-
         if(newEvaluation) {
             this.model = new EvaluationModel(newEvaluation, new IdFarm(farm));
+        }else{
+            int id=intent.getIntExtra("IdEvaluation",-1);
+            IdHandler idEvaluation=new IdEvaluation(id);
+            this.model=Database.getInstance(null).getEvaluation(idEvaluation);
         }
 
         // Initilization
