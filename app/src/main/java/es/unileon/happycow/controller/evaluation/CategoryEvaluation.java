@@ -111,18 +111,6 @@ public class CategoryEvaluation extends Fragment {
         List<EntradaLista> header=new LinkedList<>();
         HashMap<EntradaLista, List<EntradaLista>> childs=new HashMap<>();
 
-
-
-
-        EntradaCriterion head=new EntradaCriterion("Hola");
-        LinkedList<EntradaLista> children=new LinkedList<>();
-        children.add(new EntradaValoration(5.f,"head"));
-        children.add(new EntradaValoration(5.f,"head"));
-        children.add(new EntradaValoration(7.f,"head"));
-        children.add(new EntradaValoration(4.f,"head"));
-        header.add(head);
-        childs.put(head,children);
-
         adapter=new ExpandableListAdapter(getActivity(), header, childs);
 
         listValorations=(ExpandableListView)rootView.findViewById(R.id.list_valorations);

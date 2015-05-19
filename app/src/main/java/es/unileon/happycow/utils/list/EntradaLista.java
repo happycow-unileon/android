@@ -29,12 +29,6 @@ public abstract class EntradaLista {
     public abstract View onView(LayoutInflater inflater, View view, ViewGroup viewGroup);
     public abstract View onViewExpandable(LayoutInflater inflater, View view, ViewGroup viewGroup, boolean isExpand);
 
-
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
-
     @Override
     public int hashCode() {
         // Start with a non-zero constant.

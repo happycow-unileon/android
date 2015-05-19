@@ -43,9 +43,6 @@ public class EvaluationModel implements InterfaceEvaluationModel {
                 new IdEvaluation(Database.getInstance(null).nextIdEvaluation()),
         idFarm, Database.getInstance(null).getNumberCow(idFarm)));
     }
-
-
-    
     
     /**
      * 

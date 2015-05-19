@@ -5,12 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import es.unileon.happycow.utils.list.EntradaLista;
+import es.unileon.happycow.utils.list.rows.EntradaHeader;
 
 /**
  * Created by dorian on 1/05/15.
@@ -47,6 +49,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     }
 
+
+
     @Override
     public int getGroupCount() {
         return header.size();
@@ -54,13 +58,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        if(this.header.get(groupPosition)==null){
-            System.out.println("FUCK!!");
-        }
-        if(this.childs.get(this.header.get(groupPosition))==null){
-            System.out.println("DOUBLE FUCK!!");
-        }
-        System.out.println("fuck: "+this.childs.get(this.header.get(groupPosition)).size());
         return this.childs.get(this.header.get(groupPosition)).size();
     }
 
@@ -70,9 +67,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public Object getChild(int groupPosition, int childPosititon) {
+    public Object getChild(int groupPosition, int childPosition) {
         return this.childs.get(this.header.get(groupPosition))
-                .get(childPosititon);
+                .get(childPosition);
     }
 
     @Override
