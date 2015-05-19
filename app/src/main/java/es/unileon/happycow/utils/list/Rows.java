@@ -7,5 +7,7 @@ public enum Rows {
     HEADER,
     CARD_FARM,
     CARD_EVALUATION,
-    EXCEL
+    EXCEL,
+    CRITERION,
+    VALORATION
 }

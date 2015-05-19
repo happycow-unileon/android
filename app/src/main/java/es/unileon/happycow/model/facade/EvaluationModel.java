@@ -85,6 +85,11 @@ public class EvaluationModel implements InterfaceEvaluationModel {
         auxCategoria = _evaluation.search(categoria);
         auxCriterio = _evaluation.search(criterio);
 
+        if(auxCriterio==null){
+            add(categoria, new Criterion(criterio, categoria));
+            auxCriterio = _evaluation.search(criterio);
+        }
+
         if (auxCategoria != null && auxCriterio != null) {
             if (!auxCriterio.isLeaf()) {
                 Composite aux = (Composite) auxCriterio;

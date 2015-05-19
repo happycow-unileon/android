@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import es.unileon.happycow.utils.list.EntradaLista;
@@ -26,6 +27,26 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         childs=listChildData;
     }
 
+    public void addHeader(EntradaLista headerAdd){
+        if(!header.contains(headerAdd)){
+            header.add(headerAdd);
+        }
+    }
+
+    public void addChild(EntradaLista headerAdd, EntradaLista child){
+        addHeader(headerAdd);
+        List<EntradaLista> list=childs.get(headerAdd);
+        if(list==null){
+            list=new LinkedList<>();
+            list.add(child);
+            childs.put(headerAdd, list);
+        }else{
+            list.add(child);
+            childs.put(headerAdd, list);
+        }
+
+    }
+
     @Override
     public int getGroupCount() {
         return header.size();
@@ -33,6 +54,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
+        if(this.header.get(groupPosition)==null){
+            System.out.println("FUCK!!");
+        }
+        if(this.childs.get(this.header.get(groupPosition))==null){
+            System.out.println("DOUBLE FUCK!!");
+        }
+        System.out.println("fuck: "+this.childs.get(this.header.get(groupPosition)).size());
         return this.childs.get(this.header.get(groupPosition)).size();
     }
 

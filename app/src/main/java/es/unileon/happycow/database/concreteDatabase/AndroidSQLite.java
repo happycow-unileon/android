@@ -861,7 +861,7 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
         if (nextIdValoration == -1) {
                 result=connection.rawQuery("SELECT MAX(IDVALORATION) AS IDVALORATION FROM VALORATION",null);
                 if (result.moveToFirst()) {
-                    nextIdValoration = result.getInt(result.getColumnIndex("idvaloration")) + 1;
+                    nextIdValoration = result.getInt(result.getColumnIndex("IDVALORATION")) + 1;
                 }
 
         } else {
@@ -1094,9 +1094,9 @@ public class AndroidSQLite extends SQLiteOpenHelper implements DataBaseOperation
         LinkedList<PonderationDB> lista = new LinkedList<>();
             result = connection.rawQuery("SELECT * FROM PONDERACIONCATEGORIA",null);
             while (result.moveToNext()) {
-                int idEval = result.getInt(result.getColumnIndex("idevaluation"));
-                String categoria = result.getString(result.getColumnIndex("categoria"));
-                float b = result.getFloat(result.getColumnIndex("ponderacion"));
+                int idEval = result.getInt(result.getColumnIndex("IDEVALUATION"));
+                String categoria = result.getString(result.getColumnIndex("CATEGORIA"));
+                float b = result.getFloat(result.getColumnIndex("PONDERACION"));
                 PonderationDB pon = new PonderationDB(idEval, categoria, b);
 
                 lista.add(pon);

@@ -83,13 +83,14 @@ public class Evaluation extends FragmentActivity implements ActionBar.TabListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.evaluation_criterion);
 
-
         Intent intent = getIntent();
         newEvaluation=intent.getBooleanExtra("newEvaluation", false);
         int farm = intent.getIntExtra("IdFarm",0);
         if(newEvaluation) {
+            System.out.println("Por nueva evaluacion");
             this.model = new EvaluationModel(newEvaluation, new IdFarm(farm));
         }else{
+            System.out.println("Por evaluacion existente");
             int id=intent.getIntExtra("IdEvaluation",-1);
             IdHandler idEvaluation=new IdEvaluation(id);
             this.model=Database.getInstance(null).getEvaluation(idEvaluation);

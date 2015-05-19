@@ -9,13 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 
 import es.unileon.happycow.R;
 import es.unileon.happycow.database.Database;
@@ -27,6 +30,11 @@ import es.unileon.happycow.model.composite.Criterion;
 import es.unileon.happycow.model.composite.Valoration;
 import es.unileon.happycow.model.facade.InterfaceEvaluationModel;
 import es.unileon.happycow.strategy.EvaluationAlgorithm;
+import es.unileon.happycow.utils.expandableList.ExpandableListAdapter;
+import es.unileon.happycow.utils.list.EntradaLista;
+import es.unileon.happycow.utils.list.rows.EntradaCriterion;
+import es.unileon.happycow.utils.list.rows.EntradaHeader;
+import es.unileon.happycow.utils.list.rows.EntradaValoration;
 
 /**
  * Created by dorian on 11/05/15.
@@ -38,6 +46,9 @@ public class CategoryEvaluation extends Fragment {
     private Spinner criterions;
     private EditText ponderationCategory;
     private EditText ponderationCriterion;
+
+    private ExpandableListAdapter adapter;
+    private ExpandableListView listValorations;
 
     public CategoryEvaluation() {
 
@@ -67,6 +78,8 @@ public class CategoryEvaluation extends Fragment {
             IdHandler criterion = new IdCriterion(nombre);
             IdHandler categoryId = new IdCategory(category);
             Valoration val = new Valoration(valorationValue);
+            adapter.addChild(new EntradaCriterion(nombre), new EntradaValoration(valorationValue,nombre));
+            adapter.notifyDataSetChanged();
             model.add(categoryId, criterion, val);
         }
     }
@@ -94,6 +107,26 @@ public class CategoryEvaluation extends Fragment {
                              Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_category_evaluation, container, false);
+
+        List<EntradaLista> header=new LinkedList<>();
+        HashMap<EntradaLista, List<EntradaLista>> childs=new HashMap<>();
+
+
+
+
+        EntradaCriterion head=new EntradaCriterion("Hola");
+        LinkedList<EntradaLista> children=new LinkedList<>();
+        children.add(new EntradaValoration(5.f,"head"));
+        children.add(new EntradaValoration(5.f,"head"));
+        children.add(new EntradaValoration(7.f,"head"));
+        children.add(new EntradaValoration(4.f,"head"));
+        header.add(head);
+        childs.put(head,children);
+
+        adapter=new ExpandableListAdapter(getActivity(), header, childs);
+
+        listValorations=(ExpandableListView)rootView.findViewById(R.id.list_valorations);
+        listValorations.setAdapter(adapter);
 
         valoration=(TextView)rootView.findViewById(R.id.valorationValue);
         ponderationCategory=(EditText)rootView.findViewById(R.id.ponderationCategory);
@@ -126,6 +159,7 @@ public class CategoryEvaluation extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Valoration");
                 float valorationValue=Float.parseFloat(valoration.getText().toString());
                 addValoration(rootView, valorationValue);
             }

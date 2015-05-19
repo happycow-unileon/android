@@ -49,7 +49,7 @@ public class ListFarms extends Activity implements FarmsFragment.FarmListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_list_farms);
         lastPosition=0;
 
         mTitle = mDrawerTitle = getTitle();
